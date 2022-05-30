@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
-    "test-coverage": "npm run test -- --coverage --watchAll=false"
+    "test-coverage": "npm run test -- --coverage --watchAll=false",
+    "prepare": "husky install"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -52,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.0"
   }
 }
