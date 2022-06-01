@@ -188,6 +188,9 @@ const theme = createTheme({
     },
     MuiButtonBase: {
       styleOverrides: {
+        root: {
+          letterSpacing: "0.2em"
+        }
       },
       defaultProps: {
         disableRipple: true,
