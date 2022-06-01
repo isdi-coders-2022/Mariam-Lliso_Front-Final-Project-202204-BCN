@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a RegisterPage component page When it's invoked Then it should always match this snapshot 1`] = `
+<header
+  className="sc-bczRLJ jPsffr"
+>
+  <div
+    className="header MuiBox-root css-0"
+  >
+    <h1
+      className="MuiTypography-root MuiTypography-h3 css-7c3av3-MuiTypography-root"
+    >
+      Valencia Sin Gluten
+    </h1>
+  </div>
+</header>
+`;

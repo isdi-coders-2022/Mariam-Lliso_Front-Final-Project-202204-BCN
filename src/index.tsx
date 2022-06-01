@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -9,6 +8,7 @@ import "./theme/assets/fonts/Bulter/Butler.woff2";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme/theme";
+import GlobalStyle from "./theme/assets/GlobalStyle";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,6 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <CssBaseline />
       <App />
     </ThemeProvider>
