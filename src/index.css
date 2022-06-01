@@ -1,13 +1,15 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* @font-face {
+  font-family: "Butler Stencil";
+  src: url("./fonts/ButlerStencil/ButlerStencil.woff2") format("woff2"),
+    url("./fonts/ButlerStencil/ButlerStencil.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@font-face {
+  font-family: "Butler";
+  src: url("./fonts/Bulter/Butler.woff2") format("woff2"),
+    url("./fonts/Bulter/Butler.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+} */
