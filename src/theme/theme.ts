@@ -2,7 +2,7 @@ import { alpha, createTheme } from "@mui/material";
 
 import "../theme/assets/fonts/ButlerStencil/ButlerStencil.woff"
 
-function pxToRem(value: number) {
+export const pxToRem = (value: number) => {
   return `${value / 16}rem`;
 }
 
@@ -12,7 +12,7 @@ interface mediaSizes {
   lg: number
 }
 
-function responsiveFontSizes({ sm, md, lg }: mediaSizes) {
+export const responsiveFontSizes = ({ sm, md, lg }: mediaSizes) => {
   return {
     "@media (min-width:600px)": {
       fontSize: pxToRem(sm),
@@ -26,12 +26,13 @@ function responsiveFontSizes({ sm, md, lg }: mediaSizes) {
   };
 }
 
-const fontPrimary = "Poppins, sans-serif";
-const fontSecondary = "Butler, serif";
+export const fontPrimary = "Poppins, sans-serif";
+export const fontSecondary = "Butler, serif";
+export const fontSecondaryVariant = "Butler Stencil, serif";
 
 const greyColor = {
   0: "#FFFFFF",
-  100: "#F9FAFB",
+  100: "#F5F5F5",
   200: "#F4F6F8",
   300: "#DFE3E8",
   400: "#C4CDD5",
@@ -76,7 +77,7 @@ const theme = createTheme({
       fontFamily: fontSecondary,
       fontWeight: 700,
       lineHeight: 80 / 64,
-      fontSize: pxToRem(44),
+      fontSize: pxToRem(40),
       ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
     },
     h2: {
@@ -87,6 +88,7 @@ const theme = createTheme({
       ...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
     },
     h3: {
+      fontFamily: fontSecondary,
       fontWeight: 700,
       lineHeight: 1.5,
       fontSize: pxToRem(24),
@@ -152,7 +154,7 @@ const theme = createTheme({
     secondary: { ...secondaryColor },
     grey: greyColor,
     text: { primary: greyColor[800], secondary: greyColor[600], disabled: greyColor[500] },
-    background: { paper: "#fff", default: greyColor[100] },
+    background: { paper: "#fff", default: greyColor[0] },
     action: {
       active: greyColor[600],
       hover: greyColor[500_8],
@@ -190,6 +192,42 @@ const theme = createTheme({
       defaultProps: {
         disableRipple: true,
       },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          '&::placeholder': {
+            fontSize: '0.875rem'
+          }
+        }
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: `10px`,
+          '&.MuiInputBase-multiline': {
+            padding: 1
+          }
+        },
+        input: {
+          fontWeight: 500,
+          padding: '15.5px 14px',
+          borderRadius: `10px`,
+          '&.MuiInputBase-inputSizeSmall': {
+            padding: '10px 14px',
+            '&.MuiInputBase-inputAdornedStart': {
+              paddingLeft: 0
+            }
+          }
+        },
+        inputAdornedStart: {
+          paddingLeft: 4
+        },
+        notchedOutline: {
+          borderRadius: `10px`
+        }
+      }
     },
   },
 });
