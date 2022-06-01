@@ -1,26 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Alert, Button, TextField, Typography } from "@mui/material";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <>
+    <Typography variant="h1">Valencia Sin Gluten</Typography>
+
+    <Typography variant="h3">El Miracle</Typography>
+
+    <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+    <Button variant="contained">Valencia Sin Gluten</Button>
+  </>
+  )
 }
 
 export default App;
