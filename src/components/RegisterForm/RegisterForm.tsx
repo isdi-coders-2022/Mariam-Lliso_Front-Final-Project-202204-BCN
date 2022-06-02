@@ -1,6 +1,5 @@
 import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
 import { useCallback, useState } from "react";
-
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IUserRegister, IValidationUserRegister } from "../../interfaces/userInterfaces";
@@ -8,6 +7,7 @@ import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { feedbackOffActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import AlertCustom, { IAlertCustom } from "../Layout/AlertCustom/AlertCustom";
+import { userRegisterThunk } from "../../redux/thunks/userThunks";
 
 const RegisterForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -31,16 +31,18 @@ const RegisterForm = (): JSX.Element => {
       return;
     }
 
+    dispatch(userRegisterThunk(formData));
     resetData();
   };
+
+  const resetData = (): void => {
+    setFormData(formInitialState);
+  }
 
   const changeData = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const resetData = (): void => {
-    setFormData(formInitialState);
-  };
 
   const errorInitialState: IValidationUserRegister = {
     name: false,
@@ -59,7 +61,7 @@ const RegisterForm = (): JSX.Element => {
     return Object.values(tempErrors).some(element => element === true);
   }
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => {
       setShowPassword(!showPassword);
@@ -167,15 +169,15 @@ const RegisterForm = (): JSX.Element => {
         </LoadingButton>
         
         {feedback && 
-          (statusCode.toString() === "201" ? <AlertCustom title={userCreated.title} content={userCreated.content} type={userCreated.type} action={userCreated.action}></AlertCustom> : "")
+          (statusCode === 201 ? <AlertCustom title={userCreated.title} content={userCreated.content} type={userCreated.type} action={userCreated.action}></AlertCustom> : "")
         }
 
         {feedback && 
-          (statusCode.toString() === "409" ? <AlertCustom title={userFound.title} content={userFound.content} type={userFound.type} action={userFound.action}></AlertCustom> : "")
+          (statusCode === 409 ? <AlertCustom title={userFound.title} content={userFound.content} type={userFound.type} action={userFound.action}></AlertCustom> : "")
         }
 
         {feedback && 
-          (statusCode.toString() === "400" ? <AlertCustom title={validationServer.title} content={validationServer.content} type={validationServer.type} action={validationServer.action}></AlertCustom> : "")
+          (statusCode === 400 ? <AlertCustom title={validationServer.title} content={validationServer.content} type={validationServer.type} action={validationServer.action}></AlertCustom> : "")
         }
 
       </Stack>
