@@ -4,6 +4,13 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
 
+const mockDispatch = jest.fn();
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
 describe("Given a RegisterForm component", () => {
   describe("When invoked", () => {
     test("Then it should render a form with a button with the text 'registrarse'", () => {
@@ -49,7 +56,7 @@ describe("Given a RegisterForm component", () => {
     });
   });
 
-  describe("When invoked and user  enters username, name, and password", () => {
+  describe("When invoked and user enters username, name, and password", () => {
     test("Then resetData should been called", () => {
       render(
         <Provider store={store}>
@@ -61,10 +68,41 @@ describe("Given a RegisterForm component", () => {
         name: "Nombre",
       });
       userEvent.type(nameInput, "somename");
+
       const usernameInput: HTMLInputElement = screen.getByRole("textbox", {
         name: "Username",
       });
       userEvent.type(usernameInput, "someusername");
+
+      const passwordInput: HTMLInputElement = screen.getByRole("password");
+      userEvent.type(passwordInput, "somepassword");
+
+      const registerButton: HTMLButtonElement = screen.getByRole("button", {
+        name: "registrarse",
+      });
+      userEvent.click(registerButton);
+      
+      expect(nameInput).toHaveValue("");
+      expect(usernameInput).toHaveValue("");
+    });
+
+    test("Then dispatch should been called", () => {
+      render(
+        <Provider store={store}>
+            <RegisterForm></RegisterForm>
+        </Provider>
+      );
+
+      const nameInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Nombre",
+      });
+      userEvent.type(nameInput, "somename");
+
+      const usernameInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Username",
+      });
+      userEvent.type(usernameInput, "someusername");
+
       const passwordInput: HTMLInputElement = screen.getByRole("password");
       userEvent.type(passwordInput, "somepassword");
 
@@ -73,8 +111,7 @@ describe("Given a RegisterForm component", () => {
       });
       userEvent.click(registerButton);
 
-      expect(nameInput).toHaveValue("");
-      expect(usernameInput).toHaveValue("");
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

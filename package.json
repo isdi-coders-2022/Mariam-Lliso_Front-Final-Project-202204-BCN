@@ -19,7 +19,6 @@
     "@types/react-dom": "^18.0.5",
     "@types/styled-components": "^5.1.25",
     "axios": "^0.27.2",
-    "mws": "^2.0.8",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
@@ -49,7 +48,8 @@
       "!src/react-app-env.d.ts",
       "!src/theme/**",
       "!src/interfaces/**",
-      "!src/routes/**"
+      "!src/routes/**",
+      "!src/mocks/**"
     ]
   },
   "eslintConfig": {
@@ -72,6 +72,8 @@
   },
   "devDependencies": {
     "@types/react-test-renderer": "^18.0.0",
-    "husky": "^7.0.0"
+    "axios-mock-adapter": "^1.21.1",
+    "husky": "^7.0.0",
+    "msw": "^0.42.0"
   }
 }
