@@ -3,23 +3,24 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import "./theme/assets/fonts/Bulter/Butler.woff";
-import "./theme/assets/fonts/Bulter/Butler.woff2";
-
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme/theme";
 import GlobalStyle from "./theme/assets/GlobalStyle";
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
