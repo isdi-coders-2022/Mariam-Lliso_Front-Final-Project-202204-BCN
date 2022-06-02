@@ -56,7 +56,7 @@ const RegisterForm = (): JSX.Element => {
     tempErrors.password = formData.password === "" ? true : false;
     setErrors(tempErrors);
 
-    return Object.values(tempErrors).some(element => element === true);;
+    return Object.values(tempErrors).some(element => element === true);
   }
 
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +67,7 @@ const RegisterForm = (): JSX.Element => {
 
   const feedbackOff = useCallback(
     () => dispatch(feedbackOffActionCreator())
-  , [dispatch])
+  , [dispatch]);
   
   const userFound: IAlertCustom = {
     title: `Ya existe el usuario`,
