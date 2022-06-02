@@ -2,7 +2,7 @@
 
 exports[`When it's invoked Then it should always match this snapshot 1`] = `
 <div
-  className="sc-bczRLJ hIKPoH"
+  className="sc-gsnTZi esGYSl"
 >
   <h2
     className="MuiTypography-root MuiTypography-h1 register_tittle css-o2w69a-MuiTypography-root"
@@ -258,8 +258,9 @@ exports[`When it's invoked Then it should always match this snapshot 1`] = `
         </p>
       </div>
       <button
-        className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root  css-189e9pj-MuiButtonBase-root-MuiButton-root"
+        className="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root css-sppx0e-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
         disabled={false}
+        id=":r0:"
         onBlur={[Function]}
         onContextMenu={[Function]}
         onDragLeave={[Function]}

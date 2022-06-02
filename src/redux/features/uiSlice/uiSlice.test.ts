@@ -2,8 +2,8 @@ import { IErrorCode, IUserInterface } from "../../../interfaces/uiInterfaces";
 import uiReducer, {
   finishedLoadingActionCreator,
   feedbackOffActionCreator,
-  clearErrorCodeActionCreator,
-  setErrorCodeActionCreator,
+  clearStatusCodeActionCreator,
+  setStatusCodeActionCreator,
   loadingActionCreator,
   feedbackOnActionCreator
 } from "./uiSlice";
@@ -15,15 +15,15 @@ describe("Given the loadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
       const expectedState: IUserInterface = {
         loading: true,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
 
-      const action = loadingActionCreator(initialState);
+      const action = loadingActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -37,15 +37,15 @@ describe("Given the finiushedLoadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: true,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
 
-      const action = finishedLoadingActionCreator(initialState);
+      const action = finishedLoadingActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -59,15 +59,15 @@ describe("Given the feedbackOnActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: true,
-        errorCode: ""
+        statusCode: ""
       };
 
-      const action = feedbackOnActionCreator(initialState);
+      const action = feedbackOnActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -81,15 +81,15 @@ describe("Given the feedbackOffActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: true,
-        errorCode: ""
+        statusCode: ""
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
 
-      const action = feedbackOffActionCreator(initialState);
+      const action = feedbackOffActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -103,16 +103,16 @@ describe("Given the setErrorCode", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: "404"
+        statusCode: "404"
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: "404"
+        statusCode: "404"
       };
       const givenError: IErrorCode = "404"
 
-      const action = setErrorCodeActionCreator(givenError);
+      const action = setStatusCodeActionCreator(givenError);
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -126,15 +126,15 @@ describe("Given the clearErrorCode", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: "404"
+        statusCode: "404"
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        errorCode: ""
+        statusCode: ""
       };
 
-      const action = clearErrorCodeActionCreator(initialState);
+      const action = clearStatusCodeActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);

@@ -11,6 +11,7 @@ export interface IUserRegister {
   surnames: string,
   username: string,
   password: string,
+  userRol: string,
 }
 
 export interface IValidationUserRegister {

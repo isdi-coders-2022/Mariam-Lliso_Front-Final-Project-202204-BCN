@@ -4,19 +4,19 @@ import { IUserInterface } from "../../../interfaces/uiInterfaces";
 const initialState: IUserInterface = {
   loading: false,
   feedback: false,
-  errorCode: ""
+  statusCode: ""
 };
 
 const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    loading: (ui, action) => ({ ...ui, loading: true }),
-    finishedLoading: (ui, action) => ({ ...ui, loading: false }),
-    feedbackOn: (ui, action) => ({ ...ui, feedback: true }),
-    feedbackOff: (ui, action) => ({ ...ui, feedback: false }),
-    setErrorCode: (ui, action) => ({ ...ui, errorCode: action.payload }),
-    clearErrorCode: (ui, action) => ({ ...ui, errorCode: "" }),
+    loading: (ui) => ({ ...ui, loading: true }),
+    finishedLoading: (ui) => ({ ...ui, loading: false }),
+    feedbackOn: (ui) => ({ ...ui, feedback: true }),
+    feedbackOff: (ui) => ({ ...ui, feedback: false }),
+    setStatusCode: (ui, action) => ({ ...ui, statusCode: action.payload }),
+    clearStatusCode: (ui) => ({ ...ui, statusCode: "" }),
   },
 });
 
@@ -25,7 +25,7 @@ export const {
   finishedLoading: finishedLoadingActionCreator,
   feedbackOn: feedbackOnActionCreator,
   feedbackOff: feedbackOffActionCreator,
-  setErrorCode: setErrorCodeActionCreator,
-  clearErrorCode: clearErrorCodeActionCreator
+  setStatusCode: setStatusCodeActionCreator,
+  clearStatusCode: clearStatusCodeActionCreator
 } = uiSlice.actions;
 export default uiSlice.reducer;
