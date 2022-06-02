@@ -1,9 +1,13 @@
 import Header from "./components/Layout/Header/Header";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 const App = () => {
 
   return (
-  <Header></Header>
+  <>
+    <Header></Header>
+    <RegisterPage></RegisterPage>
+  </>
   )
 }
 
