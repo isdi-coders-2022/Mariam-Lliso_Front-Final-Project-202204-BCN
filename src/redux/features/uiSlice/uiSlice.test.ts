@@ -15,12 +15,12 @@ describe("Given the loadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
       const expectedState: IUserInterface = {
         loading: true,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
 
       const action = loadingActionCreator();
@@ -37,12 +37,12 @@ describe("Given the finiushedLoadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: true,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
 
       const action = finishedLoadingActionCreator();
@@ -59,12 +59,12 @@ describe("Given the feedbackOnActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: true,
-        statusCode: ""
+        statusCode: null
       };
 
       const action = feedbackOnActionCreator();
@@ -81,12 +81,12 @@ describe("Given the feedbackOffActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: true,
-        statusCode: ""
+        statusCode: null
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
 
       const action = feedbackOffActionCreator();
@@ -103,14 +103,14 @@ describe("Given the setErrorCode", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: "404"
+        statusCode: 404
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: "404"
+        statusCode: 404
       };
-      const givenError: IErrorCode = "404"
+      const givenError: IErrorCode = 404;
 
       const action = setStatusCodeActionCreator(givenError);
       const loadedState = uiReducer(initialState, action);
@@ -126,12 +126,12 @@ describe("Given the clearErrorCode", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: "404"
+        statusCode: 404
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: ""
+        statusCode: null
       };
 
       const action = clearStatusCodeActionCreator();

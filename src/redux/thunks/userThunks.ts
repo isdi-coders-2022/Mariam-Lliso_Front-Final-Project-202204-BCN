@@ -16,6 +16,7 @@ export const userRegisterThunk =
     }
 
     dispatch(loadingActionCreator());
+    dispatch(setStatusCodeActionCreator(null));
 
     await axios.post(`${url}${userRegisterEndpoint}`, userRegisterData)
       .then((response: AxiosResponse) => {

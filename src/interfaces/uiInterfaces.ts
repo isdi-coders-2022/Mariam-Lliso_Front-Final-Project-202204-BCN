@@ -1,9 +1,9 @@
 export interface IUserInterface {
   loading: boolean,
   feedback: boolean,
-  statusCode: string
+  statusCode: number | null
 }
 
-export type IErrorCode = string;
+export type IErrorCode = number;
 
 export type ITypeOfAlert = "error" | "info" | "success" | "warning";

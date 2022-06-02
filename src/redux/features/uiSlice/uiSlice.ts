@@ -4,7 +4,7 @@ import { IUserInterface } from "../../../interfaces/uiInterfaces";
 const initialState: IUserInterface = {
   loading: false,
   feedback: false,
-  statusCode: ""
+  statusCode: null
 };
 
 const uiSlice = createSlice({
@@ -16,7 +16,7 @@ const uiSlice = createSlice({
     feedbackOn: (ui) => ({ ...ui, feedback: true }),
     feedbackOff: (ui) => ({ ...ui, feedback: false }),
     setStatusCode: (ui, action) => ({ ...ui, statusCode: action.payload }),
-    clearStatusCode: (ui) => ({ ...ui, statusCode: "" }),
+    clearStatusCode: (ui) => ({ ...ui, statusCode: null }),
   },
 });
 
