@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a RegisterPage component page When it's invoked Then it should always match this snapshot 1`] = `
+<div
+  className="sc-bczRLJ jILTDa"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardWarning MuiAlert-standard css-1fi1xst-MuiPaper-root-MuiAlert-root"
+    role="alert"
+  >
+    <div
+      className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+        data-testid="ReportProblemOutlinedIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
+        />
+      </svg>
+    </div>
+    <div
+      className="MuiAlert-message css-acap47-MuiAlert-message"
+    >
+      <div
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-zahiqg-MuiTypography-root-MuiAlertTitle-root"
+      >
+        some title
+      </div>
+      som content
+    </div>
+    <div
+      className="MuiAlert-action css-ki1hdl-MuiAlert-action"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-f86lq1-MuiButtonBase-root-MuiIconButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-ptiqhd-MuiSvgIcon-root"
+          data-testid="CloseIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
