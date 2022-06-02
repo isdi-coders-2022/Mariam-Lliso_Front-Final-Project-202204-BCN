@@ -4,13 +4,13 @@ export const pxToRem = (value: number) => {
   return `${value / 16}rem`;
 }
 
-interface mediaSizes {
+interface IMediaSizes {
   sm: number,
   md: number,
   lg: number
 }
 
-export const responsiveFontSizes = ({ sm, md, lg }: mediaSizes) => {
+export const responsiveFontSizes = ({ sm, md, lg }: IMediaSizes) => {
   return {
     "@media (min-width:600px)": {
       fontSize: pxToRem(sm),

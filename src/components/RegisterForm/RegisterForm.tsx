@@ -1,16 +1,24 @@
-import { Button, FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
-import { useState } from "react";
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
+import { useCallback, useState } from "react";
 
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IUserRegister, IValidationUserRegister } from "../../interfaces/userInterfaces";
+import { LoadingButton } from "@mui/lab";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { feedbackOffActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import AlertCustom, { IAlertCustom } from "../Layout/AlertCustom/AlertCustom";
 
 const RegisterForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const {loading, feedback, statusCode} = useAppSelector((state) => state.ui);
+
   const formInitialState: IUserRegister = {
     name: "",
     surnames: "",
     username: "",
     password: "",
+    userRol: "",
   }
   const [formData, setFormData] = useState<IUserRegister>(formInitialState);
 
@@ -48,8 +56,7 @@ const RegisterForm = (): JSX.Element => {
     tempErrors.password = formData.password === "" ? true : false;
     setErrors(tempErrors);
 
-    const isNotValidated = Object.values(tempErrors).some(element => element === true);
-    return isNotValidated;
+    return Object.values(tempErrors).some(element => element === true);;
   }
 
   const [showPassword, setShowPassword] = useState(false);
@@ -57,7 +64,36 @@ const RegisterForm = (): JSX.Element => {
   const handleClickShowPassword = () => {
       setShowPassword(!showPassword);
   };
+
+  const feedbackOff = useCallback(
+    () => dispatch(feedbackOffActionCreator())
+  , [dispatch])
   
+  const userFound: IAlertCustom = {
+    title: `Ya existe el usuario`,
+    content: `
+      Parece que el nombre de usuario que has indicado ya esta cogido.
+      Prueba con otro o inicia sesión.`,
+    type: "warning",
+    action: feedbackOff
+  }
+
+  const userCreated: IAlertCustom = {
+    title: `Usuario registrado`,
+    content: `¡Genial! Ahora ya formas parte de Valencia Sin Gluten.
+      Solo queda que inicies sesión y listo.`,
+    type: "success",
+    action: feedbackOff
+  }
+
+  const validationServer: IAlertCustom = {
+    title: `Los datos introducidos no son correctos`,
+    content: `
+      El nombre, el apellido y el nombre de usuario no debe superar los 30 caracteres.
+      La contraseña debe tener entre 5 y 20 caracteres.`,
+    type: "error",
+    action: feedbackOff
+  }
 
   return (
     <form autoComplete="off" onSubmit={submitRegisterForm}>
@@ -126,9 +162,22 @@ const RegisterForm = (): JSX.Element => {
           <FormHelperText id="password-helpertext" error={errors.password}>{errors.password ? "La contraseña es obligatoria" : " "}</FormHelperText>
         </FormControl>
 
-        <Button fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={loading}>
           registrarse
-        </Button>
+        </LoadingButton>
+        
+        {feedback && 
+          (statusCode.toString() === "201" ? <AlertCustom title={userCreated.title} content={userCreated.content} type={userCreated.type} action={userCreated.action}></AlertCustom> : "")
+        }
+
+        {feedback && 
+          (statusCode.toString() === "409" ? <AlertCustom title={userFound.title} content={userFound.content} type={userFound.type} action={userFound.action}></AlertCustom> : "")
+        }
+
+        {feedback && 
+          (statusCode.toString() === "400" ? <AlertCustom title={validationServer.title} content={validationServer.content} type={validationServer.type} action={validationServer.action}></AlertCustom> : "")
+        }
+
       </Stack>
     </form>
     )
