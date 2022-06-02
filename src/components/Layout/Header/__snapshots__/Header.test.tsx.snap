@@ -8,7 +8,7 @@ exports[`Given a RegisterPage component page When it's invoked Then it should al
     className="header MuiBox-root css-0"
   >
     <h1
-      className="MuiTypography-root MuiTypography-h3 css-7c3av3-MuiTypography-root"
+      className="MuiTypography-root MuiTypography-h3 css-erduvi-MuiTypography-root"
     >
       Valencia Sin Gluten
     </h1>

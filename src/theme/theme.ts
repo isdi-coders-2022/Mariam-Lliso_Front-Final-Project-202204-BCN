@@ -1,7 +1,5 @@
 import { alpha, createTheme } from "@mui/material";
 
-import "../theme/assets/fonts/ButlerStencil/ButlerStencil.woff"
-
 export const pxToRem = (value: number) => {
   return `${value / 16}rem`;
 }
@@ -27,8 +25,7 @@ export const responsiveFontSizes = ({ sm, md, lg }: mediaSizes) => {
 }
 
 export const fontPrimary = "Poppins, sans-serif";
-export const fontSecondary = "Butler, serif";
-export const fontSecondaryVariant = "Butler Stencil, serif";
+export const fontSecondary = "Libre Bodoni, serif;";
 
 const greyColor = {
   0: "#FFFFFF",
@@ -167,25 +164,6 @@ const theme = createTheme({
     },
   },
   components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: "Butler";
-          src: url("../theme/assets/fonts/Bulter/Butler.woff2") format("woff2"),
-            url("../theme/assets/fonts/Bulter/Butler.woff") format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
-
-        @font-face {
-          font-family: "Butler Stencil";
-          src: url("../theme/assets/fonts/ButlerStencil/ButlerStencil.woff2") format("woff2"),
-            url("../theme/assets/fonts/ButlerStencil/ButlerStencil.woff") format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
-      `,
-    },
     MuiButtonBase: {
       styleOverrides: {
         root: {
