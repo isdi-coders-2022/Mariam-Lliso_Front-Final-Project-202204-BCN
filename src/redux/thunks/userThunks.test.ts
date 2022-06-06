@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { IUserRegister } from "../../interfaces/userInterfaces";
+import { IUserRegister } from "../../types/userInterfaces";
 import { feedbackOnActionCreator, finishedLoadingActionCreator, setStatusCodeActionCreator } from "../features/uiSlice/uiSlice";
 import { userRegisterThunk } from "./userThunks";
 

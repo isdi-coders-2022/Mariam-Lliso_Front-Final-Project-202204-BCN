@@ -1,4 +1,4 @@
-import { IUserRegister } from "../interfaces/userInterfaces";
+import { IUserRegister } from "../types/userInterfaces";
 
 export const mockUserRegister: IUserRegister = {
   name: "name",

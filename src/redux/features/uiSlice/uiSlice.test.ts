@@ -1,4 +1,4 @@
-import { IErrorCode, IUserInterface } from "../../../interfaces/uiInterfaces";
+import { IErrorCode, IUserInterface } from "../../../types/uiInterfaces";
 import uiReducer, {
   finishedLoadingActionCreator,
   feedbackOffActionCreator,
@@ -15,12 +15,12 @@ describe("Given the loadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
       const expectedState: IUserInterface = {
         loading: true,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
 
       const action = loadingActionCreator();
@@ -37,12 +37,12 @@ describe("Given the finiushedLoadingActionCreator", () => {
       const initialState: IUserInterface = {
         loading: true,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
 
       const action = finishedLoadingActionCreator();
@@ -59,12 +59,12 @@ describe("Given the feedbackOnActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: true,
-        statusCode: null
+        statusCode: 0
       };
 
       const action = feedbackOnActionCreator();
@@ -81,12 +81,12 @@ describe("Given the feedbackOffActionCreator", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: true,
-        statusCode: null
+        statusCode: 0
       };
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
 
       const action = feedbackOffActionCreator();
@@ -122,7 +122,7 @@ describe("Given the setErrorCode", () => {
 
 describe("Given the clearErrorCode", () => {
   describe("When invoked", () => {
-    test("Then the errorCode ui state should change to ''", () => {
+    test("Then the errorCode ui state should change to 0", () => {
       const initialState: IUserInterface = {
         loading: false,
         feedback: false,
@@ -131,7 +131,7 @@ describe("Given the clearErrorCode", () => {
       const expectedState: IUserInterface = {
         loading: false,
         feedback: false,
-        statusCode: null
+        statusCode: 0
       };
 
       const action = clearStatusCodeActionCreator();
