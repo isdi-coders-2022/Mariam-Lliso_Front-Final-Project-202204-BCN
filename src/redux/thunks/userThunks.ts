@@ -64,7 +64,6 @@ export const userLoginThunk =
         dispatch(finishedLoadingActionCreator());
 
         if (error.response) {
-          console.log(error.response)
           dispatch(feedbackOnActionCreator())
           dispatch(setStatusCodeActionCreator(error.response.status));
         }
