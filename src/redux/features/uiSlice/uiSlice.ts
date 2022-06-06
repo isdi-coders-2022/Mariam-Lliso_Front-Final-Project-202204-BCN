@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IUserInterface } from "../../../interfaces/uiInterfaces";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IUserInterface } from "../../../types/uiInterfaces";
 
 const initialState: IUserInterface = {
   loading: false,
   feedback: false,
-  statusCode: null
+  statusCode: 0
 };
 
 const uiSlice = createSlice({
@@ -15,8 +15,8 @@ const uiSlice = createSlice({
     finishedLoading: (ui) => ({ ...ui, loading: false }),
     feedbackOn: (ui) => ({ ...ui, feedback: true }),
     feedbackOff: (ui) => ({ ...ui, feedback: false }),
-    setStatusCode: (ui, action) => ({ ...ui, statusCode: action.payload }),
-    clearStatusCode: (ui) => ({ ...ui, statusCode: null }),
+    setStatusCode: (ui, action: PayloadAction<number>) => ({ ...ui, statusCode: action.payload }),
+    clearStatusCode: (ui) => ({ ...ui, statusCode: 0 }),
   },
 });
 

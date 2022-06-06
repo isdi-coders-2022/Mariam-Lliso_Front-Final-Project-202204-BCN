@@ -5,10 +5,10 @@ import RegisterPageStyle from "./RegisterPageStyle";
 const RegisterPage = (): JSX.Element => {
   return (
     <RegisterPageStyle>
-      <Typography variant="h1" component="h2" className="register_tittle">
-          Crear una nueva cuenta
-        </Typography>
-      <RegisterForm></RegisterForm>
+          <Typography variant="h1" component="h2" className="register_tittle">
+            Crear una nueva cuenta
+          </Typography>
+        <RegisterForm></RegisterForm>
     </RegisterPageStyle>
   )
 }
