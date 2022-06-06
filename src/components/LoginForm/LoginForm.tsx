@@ -1,0 +1,113 @@
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
+import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { IUserLogin, IValidationUserLogin } from "../../types/userInterfaces";
+import { LoadingButton } from "@mui/lab";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { userLoginThunk } from "../../redux/thunks/userThunks";
+
+const LoginForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.ui);
+
+  const formInitialState: IUserLogin = {
+    username: "",
+    password: "",
+  }
+  const [formData, setFormData] = useState<IUserLogin>(formInitialState);
+
+  const submitRegisterForm = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+    const isNotValidated = validateFields();
+    if (isNotValidated) {
+      return;
+    }
+
+    dispatch(userLoginThunk(formData));
+    resetData();
+  };
+
+  const resetData = (): void => {
+    setFormData(formInitialState);
+  }
+
+  const changeData = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+  };
+
+
+  const errorInitialState: IValidationUserLogin = {
+    username: false,
+    password: false,
+  }
+  const [errors, setErrors] = useState<IValidationUserLogin>(errorInitialState);
+
+  const validateFields = (): boolean => {
+    let tempErrors = {...errors};
+    tempErrors.username = formData.username === "" ? true : false;
+    tempErrors.password = formData.password === "" ? true : false;
+    setErrors(tempErrors);
+
+    return Object.values(tempErrors).some(element => element === true);
+  }
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleClickShowPassword = () => {
+      setShowPassword(!showPassword);
+  };
+
+  return (
+    <form autoComplete="off" onSubmit={submitRegisterForm}>
+      <Stack spacing={3}>
+
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="username" error={errors.username}>Username</InputLabel>
+          <OutlinedInput
+            id="username"
+            type="text"
+            label="Username"
+            onChange={changeData}
+            value={formData.username}
+            error={errors.username}
+          />
+          <FormHelperText id="username-helpertext" error={errors.username}>{errors.username ? "El nombre de usuario es obligatorio" : " "}</FormHelperText>
+        </FormControl>
+
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="password" error={errors.password}>Password</InputLabel>
+          <OutlinedInput
+            id="password"
+            role="password"
+            type={showPassword ? "text" : "password"}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle-password-visibility"
+                  onClick={handleClickShowPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+            onChange={changeData}
+            value={formData.password}
+            error={errors.password}
+          />
+          <FormHelperText id="password-helpertext" error={errors.password}>{errors.password ? "La contraseña es obligatoria" : " "}</FormHelperText>
+        </FormControl>
+
+        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={loading}>
+          iniciar sesión
+        </LoadingButton>
+      </Stack>
+    </form>
+    )
+}
+
+export default LoginForm;

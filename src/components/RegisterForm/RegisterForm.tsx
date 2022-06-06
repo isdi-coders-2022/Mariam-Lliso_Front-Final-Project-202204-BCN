@@ -2,7 +2,7 @@ import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, Ou
 import { useCallback, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IUserRegister, IValidationUserRegister } from "../../interfaces/userInterfaces";
+import { IUserRegister, IValidationUserRegister } from "../../types/userInterfaces";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { feedbackOffActionCreator } from "../../redux/features/uiSlice/uiSlice";

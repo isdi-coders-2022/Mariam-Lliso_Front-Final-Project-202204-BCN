@@ -6,6 +6,11 @@ export interface IUserState {
     id: string
   }
 }
+export interface IUserLoged {
+  username: string,
+  userRol: string,
+  id: string
+}
 
 export interface IUserRegister {
   name: string,
