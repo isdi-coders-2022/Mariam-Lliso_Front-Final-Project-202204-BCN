@@ -1,5 +1,5 @@
 import { Alert, AlertTitle } from "@mui/material";
-import { ITypeOfAlert } from "../../../interfaces/uiInterfaces";
+import { ITypeOfAlert } from "../../../types/uiInterfaces";
 import AlertCustomStyle from "./AlertCustomStyle";
 
 export interface IAlertCustom {

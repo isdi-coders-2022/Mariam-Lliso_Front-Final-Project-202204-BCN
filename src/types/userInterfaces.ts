@@ -1,9 +1,10 @@
 export interface IUserState {
   logged: boolean,
-  name: string,
-  surnames: string,
-  username: string,
-  userRol: string,
+  userData: {
+    username: string,
+    userRol: string,
+    id: string
+  }
 }
 
 export interface IUserRegister {
@@ -14,8 +15,19 @@ export interface IUserRegister {
   userRol: string,
 }
 
+export interface IUserLogin {
+  username: string,
+  password: string,
+}
+
 export interface IValidationUserRegister {
   name: boolean,
   username: boolean,
   password: boolean,
 }
+
+export interface IValidationUserLogin {
+  username: boolean,
+  password: boolean,
+}
+
