@@ -3,7 +3,6 @@ import theme from "../../../theme/theme";
 
 
 const NavigationStyle = styled.div`
-
   .Mui-focusVisible {
     color: ${theme.palette.primary.main};
   }
@@ -34,6 +33,7 @@ const NavigationStyle = styled.div`
       flex-direction: column;
       align-items: center;
     }
+
     .navigation__icon{
       margin-bottom: -5px;
     }
@@ -43,6 +43,7 @@ const NavigationStyle = styled.div`
     .navigation__tab {
       align-items: center;
     }
+
     .navigation__icon{
       margin-right: 10px;
     }

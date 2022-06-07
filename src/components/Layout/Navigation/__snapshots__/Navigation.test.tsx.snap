@@ -2,7 +2,7 @@
 
 exports[`Given a Navigation component page When it's invoked Then it should always match this snapshot 1`] = `
 <div
-  className="sc-bczRLJ ggimgd"
+  className="sc-bczRLJ AYbFv"
 >
   <button
     className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-ur4yn8-MuiButtonBase-root-MuiButton-root"
