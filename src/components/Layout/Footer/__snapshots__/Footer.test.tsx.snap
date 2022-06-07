@@ -8,7 +8,7 @@ exports[`Given a Footer component page When it's invoked Then it should always m
     className="nav"
   >
     <div
-      className="sc-bczRLJ AYbFv"
+      className="sc-bczRLJ gfNMHh"
     >
       <button
         className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-ur4yn8-MuiButtonBase-root-MuiButton-root"
