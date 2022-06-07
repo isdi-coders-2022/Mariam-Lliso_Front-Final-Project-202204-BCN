@@ -3,16 +3,19 @@ import GlobalStyle from "../../../theme/assets/GlobalStyle";
 import theme from "../../../theme/theme";
 import Header from "./Header";
 import TestRenderer from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Given a Header component page", () => {
   describe("When it's invoked", () => {
     test("Then it should always match this snapshot", () => {
       const testedRegisterPage = TestRenderer.create(
-      <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <CssBaseline />
-      <Header />
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <CssBaseline />
+          <Header />
+        </ThemeProvider>
+      </BrowserRouter>
       );
 
       expect(testedRegisterPage).toMatchSnapshot();
