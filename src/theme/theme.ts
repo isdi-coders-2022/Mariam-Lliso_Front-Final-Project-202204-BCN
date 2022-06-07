@@ -2,12 +2,12 @@ import { alpha, createTheme } from "@mui/material";
 
 export const pxToRem = (value: number) => {
   return `${value / 16}rem`;
-}
+};
 
 interface IMediaSizes {
-  sm: number,
-  md: number,
-  lg: number
+  sm: number;
+  md: number;
+  lg: number;
 }
 
 export const responsiveFontSizes = ({ sm, md, lg }: IMediaSizes) => {
@@ -22,7 +22,7 @@ export const responsiveFontSizes = ({ sm, md, lg }: IMediaSizes) => {
       fontSize: pxToRem(lg),
     },
   };
-}
+};
 
 export const fontPrimary = "Poppins, sans-serif";
 export const fontSecondary = "Libre Bodoni, serif;";
@@ -150,7 +150,11 @@ const theme = createTheme({
     primary: { ...primaryColor },
     secondary: { ...secondaryColor },
     grey: greyColor,
-    text: { primary: greyColor[800], secondary: greyColor[600], disabled: greyColor[500] },
+    text: {
+      primary: greyColor[800],
+      secondary: greyColor[600],
+      disabled: greyColor[500],
+    },
     background: { paper: "#fff", default: greyColor[0] },
     action: {
       active: greyColor[600],
@@ -167,8 +171,8 @@ const theme = createTheme({
     MuiButtonBase: {
       styleOverrides: {
         root: {
-          letterSpacing: "0.2em"
-        }
+          letterSpacing: "0.2em",
+        },
       },
       defaultProps: {
         disableRipple: true,
@@ -177,38 +181,38 @@ const theme = createTheme({
     MuiInputBase: {
       styleOverrides: {
         input: {
-          '&::placeholder': {
-            fontSize: '0.875rem'
-          }
-        }
-      }
+          "&::placeholder": {
+            fontSize: "0.875rem",
+          },
+        },
+      },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
           borderRadius: `10px`,
-          '&.MuiInputBase-multiline': {
-            padding: 1
-          }
+          "&.MuiInputBase-multiline": {
+            padding: 1,
+          },
         },
         input: {
           fontWeight: 500,
-          padding: '15.5px 14px',
+          padding: "15.5px 14px",
           borderRadius: `10px`,
-          '&.MuiInputBase-inputSizeSmall': {
-            padding: '10px 14px',
-            '&.MuiInputBase-inputAdornedStart': {
-              paddingLeft: 0
-            }
-          }
+          "&.MuiInputBase-inputSizeSmall": {
+            padding: "10px 14px",
+            "&.MuiInputBase-inputAdornedStart": {
+              paddingLeft: 0,
+            },
+          },
         },
         inputAdornedStart: {
-          paddingLeft: 4
+          paddingLeft: 4,
         },
         notchedOutline: {
-          borderRadius: `10px`
-        }
-      }
+          borderRadius: `10px`,
+        },
+      },
     },
   },
 });
