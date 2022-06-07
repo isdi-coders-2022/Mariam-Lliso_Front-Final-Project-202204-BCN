@@ -1,7 +1,7 @@
 import Header from "./components/Layout/Header/Header";
 import Footer from "./components/Layout/Footer/Footer";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import ContainerStyle from "./AppStyle";
+import AppStyle from "./AppStyle";
 import { Navigate, Route, Routes } from "react-router-dom";
 import EstablishmentListPage from "./pages/EstablishmentListPage/EstablishmentListPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -9,7 +9,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 const App = () => {
 
   return (
-  <ContainerStyle>
+  <AppStyle>
     <Header/>
     <main className="main">
       <Routes>
@@ -20,7 +20,7 @@ const App = () => {
       </Routes>
     </main>
     <Footer />
-  </ContainerStyle>
+  </AppStyle>
   )
 }
 
