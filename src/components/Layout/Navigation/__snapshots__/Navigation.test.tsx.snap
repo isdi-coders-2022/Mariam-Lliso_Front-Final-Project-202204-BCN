@@ -8,6 +8,7 @@ exports[`Given a Navigation component page When it's invoked Then it should alwa
     className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-ur4yn8-MuiButtonBase-root-MuiButton-root"
     disabled={false}
     onBlur={[Function]}
+    onClick={[Function]}
     onContextMenu={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}
