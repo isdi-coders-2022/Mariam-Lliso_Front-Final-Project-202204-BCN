@@ -278,6 +278,15 @@ exports[`When it's invoked Then it should always match this snapshot 1`] = `
       >
         registrarse
       </button>
+      <button
+        className="MuiTypography-root MuiTypography-subtitle2 MuiLink-root MuiLink-underlineNone MuiLink-button css-1kyronh-MuiTypography-root-MuiLink-root"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        type="button"
+      >
+        ¿Ya tienes una cuenta? ¡Inicia sesión!
+      </button>
     </div>
   </form>
 </div>
