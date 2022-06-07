@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import LoginForm from "./LoginForm";
+import { BrowserRouter } from "react-router-dom";
 
 const mockDispatch = jest.fn();
 
@@ -15,9 +16,11 @@ describe("Given a LoginForm component", () => {
   describe("When invoked", () => {
     test("Then it should render a form with a button with the text 'iniciar sesión'", () => {
       render(
-        <Provider store={store}>
+        <BrowserRouter>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
+        </BrowserRouter>
       );
       const expectedButton: HTMLButtonElement = screen.getByRole("button", {
         name: "iniciar sesión",
@@ -32,9 +35,11 @@ describe("Given a LoginForm component", () => {
   describe("When invoked and user don't enters username, name, and password", () => {
     test("Then it should show three diferenten helper text for each field", () => {
       const view = render(
-        <Provider store={store}>
+        <BrowserRouter>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
+        </BrowserRouter>
       );
       const expectedUsernameText = "El nombre de usuario es obligatorio";
       const expectedPasswordText = "La contraseña es obligatoria";
@@ -55,9 +60,11 @@ describe("Given a LoginForm component", () => {
   describe("When invoked and user enters username, and password", () => {
     test("Then resetData should been called", () => {
       render(
-        <Provider store={store}>
+        <BrowserRouter>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
+        </BrowserRouter>
       );
 
       const usernameInput: HTMLInputElement = screen.getByRole("textbox", {
@@ -72,15 +79,17 @@ describe("Given a LoginForm component", () => {
         name: "iniciar sesión",
       });
       userEvent.click(registerButton);
-      
+
       expect(usernameInput).toHaveValue("");
     });
 
     test("Then dispatch should been called", () => {
       render(
-        <Provider store={store}>
+        <BrowserRouter>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
+        </BrowserRouter>
       );
 
       const usernameInput: HTMLInputElement = screen.getByRole("textbox", {

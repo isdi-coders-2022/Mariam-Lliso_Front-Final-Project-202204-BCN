@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import Navigation from "../Navigation/Navigation";
 import HeaderStyle from "./HeaderStyle";
 
 const Header = (): JSX.Element => {
@@ -8,6 +9,9 @@ const Header = (): JSX.Element => {
         <Typography variant="h3" component="h1">
           Valencia Sin Gluten
         </Typography>
+        <div className="header__navigation">
+          <Navigation />
+        </div>
       </Box>
     </HeaderStyle>
   )

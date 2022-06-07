@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Stack } from "@mui/material";
 import { useCallback, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { feedbackOffActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import AlertCustom, { IAlertCustom } from "../Layout/AlertCustom/AlertCustom";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -97,6 +98,11 @@ const RegisterForm = (): JSX.Element => {
     action: feedbackOff
   }
 
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <form autoComplete="off" onSubmit={submitRegisterForm}>
       <Stack spacing={3}>
@@ -180,6 +186,8 @@ const RegisterForm = (): JSX.Element => {
           (statusCode === 400 ? <AlertCustom title={validationServer.title} content={validationServer.content} type={validationServer.type} action={validationServer.action}></AlertCustom> : "")
         }
 
+        <Link variant="subtitle2" type="button" component="button" underline="none" onClick={navigateToLogin}>¿Ya tienes una cuenta? ¡Inicia sesión!</Link>
+      
       </Stack>
     </form>
     )

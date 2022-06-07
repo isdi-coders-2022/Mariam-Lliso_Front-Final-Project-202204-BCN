@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from "@mui/material";
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Stack } from "@mui/material";
 import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -6,6 +6,7 @@ import { IUserLogin, IValidationUserLogin } from "../../types/userInterfaces";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { userLoginThunk } from "../../redux/thunks/userThunks";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -60,6 +61,11 @@ const LoginForm = (): JSX.Element => {
       setShowPassword(!showPassword);
   };
 
+  const navigate = useNavigate();
+  const navigateToRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <form autoComplete="off" onSubmit={submitRegisterForm}>
       <Stack spacing={3}>
@@ -105,6 +111,8 @@ const LoginForm = (): JSX.Element => {
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={loading}>
           iniciar sesión
         </LoadingButton>
+
+        <Link variant="subtitle2" type="button" component="button" underline="none" onClick={navigateToRegister}>¿Aun no tienes cuenta? ¡Registrate ahora!</Link>
       </Stack>
     </form>
     )
