@@ -112,7 +112,7 @@ const LoginForm = (): JSX.Element => {
           iniciar sesión
         </LoadingButton>
 
-        <Link type="button" component="button" underline="none" onClick={navigateToRegister}>¿Aun no tienes cuenta? ¡Registrate ahora!</Link>
+        <Link variant="subtitle2" type="button" component="button" underline="none" onClick={navigateToRegister}>¿Aun no tienes cuenta? ¡Registrate ahora!</Link>
       </Stack>
     </form>
     )
