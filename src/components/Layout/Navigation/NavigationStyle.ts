@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import theme from "../../../theme/theme";
 
-
 const NavigationStyle = styled.div`
   .Mui-focusVisible {
     color: ${theme.palette.primary.main};
   }
 
-	.MuiButton-root {
+  .MuiButton-root {
     color: ${theme.palette.grey[900]};
   }
 
@@ -33,7 +32,7 @@ const NavigationStyle = styled.div`
       align-items: center;
     }
 
-    .navigation__icon{
+    .navigation__icon {
       margin-bottom: -5px;
     }
   }
@@ -43,7 +42,7 @@ const NavigationStyle = styled.div`
       align-items: center;
     }
 
-    .navigation__icon{
+    .navigation__icon {
       margin-right: 10px;
     }
   }
