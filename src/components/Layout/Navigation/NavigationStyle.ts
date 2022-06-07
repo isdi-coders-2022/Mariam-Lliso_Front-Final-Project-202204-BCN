@@ -22,7 +22,6 @@ const NavigationStyle = styled.div`
     color: green;
   }
 
-
   @media only screen and (max-width: 768px) {
     display: flex;
     flex-direction: row;
