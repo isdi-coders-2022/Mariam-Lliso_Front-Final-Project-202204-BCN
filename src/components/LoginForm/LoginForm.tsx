@@ -5,7 +5,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IUserLogin, IValidationUserLogin } from "../../types/userInterfaces";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { userLoginThunk } from "../../redux/thunks/userThunks";
+import { userLoginThunk } from "../../redux/thunks/userThunks/userThunks";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = (): JSX.Element => {

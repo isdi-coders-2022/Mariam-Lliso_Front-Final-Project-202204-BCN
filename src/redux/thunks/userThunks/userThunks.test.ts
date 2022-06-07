@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { IUserLogin, IUserRegister } from "../../types/userInterfaces";
-import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../features/uiSlice/uiSlice";
+import { IUserLogin, IUserRegister } from "../../../types/userInterfaces";
+import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../../features/uiSlice/uiSlice";
 import { userLoginThunk, userRegisterThunk } from "./userThunks";
 
 const mock = new MockAdapter(axios);
