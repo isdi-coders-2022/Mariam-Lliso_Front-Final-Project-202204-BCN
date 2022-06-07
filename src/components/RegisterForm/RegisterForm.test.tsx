@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
+import { BrowserRouter } from "react-router-dom";
 
 const mockDispatch = jest.fn();
 
@@ -15,9 +16,11 @@ describe("Given a RegisterForm component", () => {
   describe("When invoked", () => {
     test("Then it should render a form with a button with the text 'registrarse'", () => {
       render(
+        <BrowserRouter>
         <Provider store={store}>
             <RegisterForm></RegisterForm>
         </Provider>
+        </BrowserRouter>
       );
       const expectedButton: HTMLButtonElement = screen.getByRole("button", {
         name: "registrarse",
@@ -32,9 +35,11 @@ describe("Given a RegisterForm component", () => {
   describe("When invoked and user don't enters username, name, and password", () => {
     test("Then it should show three diferenten helper text for each field", () => {
       const view = render(
+        <BrowserRouter>
         <Provider store={store}>
             <RegisterForm></RegisterForm>
         </Provider>
+        </BrowserRouter>
       );
       const expectedNameText = "El nombre es obligatorio";
       const expectedUsernameText = "El nombre de usuario es obligatorio";
@@ -59,9 +64,11 @@ describe("Given a RegisterForm component", () => {
   describe("When invoked and user enters username, name, and password", () => {
     test("Then resetData should been called", () => {
       render(
+        <BrowserRouter>
         <Provider store={store}>
             <RegisterForm></RegisterForm>
         </Provider>
+        </BrowserRouter>
       );
 
       const nameInput: HTMLInputElement = screen.getByRole("textbox", {
@@ -88,9 +95,11 @@ describe("Given a RegisterForm component", () => {
 
     test("Then dispatch should been called", () => {
       render(
+        <BrowserRouter>
         <Provider store={store}>
             <RegisterForm></RegisterForm>
         </Provider>
+        </BrowserRouter>
       );
 
       const nameInput: HTMLInputElement = screen.getByRole("textbox", {
