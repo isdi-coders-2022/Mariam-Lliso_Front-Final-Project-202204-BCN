@@ -17,9 +17,9 @@ describe("Given a LoginForm component", () => {
     test("Then it should render a form with a button with the text 'iniciar sesión'", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
       const expectedButton: HTMLButtonElement = screen.getByRole("button", {
@@ -36,9 +36,9 @@ describe("Given a LoginForm component", () => {
     test("Then it should show three diferenten helper text for each field", () => {
       const view = render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
       const expectedUsernameText = "El nombre de usuario es obligatorio";
@@ -61,9 +61,9 @@ describe("Given a LoginForm component", () => {
     test("Then resetData should been called", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
 
@@ -79,16 +79,16 @@ describe("Given a LoginForm component", () => {
         name: "iniciar sesión",
       });
       userEvent.click(registerButton);
-      
+
       expect(usernameInput).toHaveValue("");
     });
 
     test("Then dispatch should been called", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <LoginForm></LoginForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
 
