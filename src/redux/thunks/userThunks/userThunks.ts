@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
-import { IUserLoged, IUserLogin, IUserRegister } from "../../types/userInterfaces";
-import { userLoginEndpoint, userRegisterEndpoint } from "../../routes/userEndpoints";
-import { rolUser } from "../../utils/userRols";
-import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../features/uiSlice/uiSlice";
-import { AppDispatch } from "../store/store";
+import { IUserLoged, IUserLogin, IUserRegister } from "../../../types/userInterfaces";
+import { userLoginEndpoint, userRegisterEndpoint } from "../../../routes/userEndpoints";
+import { rolUser } from "../../../utils/userRols";
+import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../../features/uiSlice/uiSlice";
+import { AppDispatch } from "../../store/store";
 import jwtDecode from "jwt-decode";
-import { loginActionCreator } from "../features/userSlice/userSlice";
+import { loginActionCreator } from "../../features/userSlice/userSlice";
 
 const url = process.env.REACT_APP_API_URL;
 

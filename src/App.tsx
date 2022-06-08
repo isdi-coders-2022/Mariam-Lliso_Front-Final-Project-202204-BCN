@@ -5,8 +5,16 @@ import AppStyle from "./AppStyle";
 import { Navigate, Route, Routes } from "react-router-dom";
 import EstablishmentListPage from "./pages/EstablishmentListPage/EstablishmentListPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import { useEffect } from "react";
+import { loadEstablishmentThunk } from "./redux/thunks/establishmentThunks/establishmentThunks";
+import { useAppDispatch } from "./redux/hooks";
 
 const App = () => {
+  const dispatch = useAppDispatch();
+  
+  useEffect(() => {
+    dispatch(loadEstablishmentThunk());
+  }, [dispatch]);
 
   return (
   <AppStyle>

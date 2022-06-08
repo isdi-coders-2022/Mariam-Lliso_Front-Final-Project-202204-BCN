@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Loader component page When it's invoked Then it should always match this snapshot 1`] = `
+<div
+  className="sc-bczRLJ cjFpcy"
+>
+  <div
+    className="dot-pulse"
+  >
+    <div
+      className="dot-pulse__dot"
+    />
+  </div>
+</div>
+`;

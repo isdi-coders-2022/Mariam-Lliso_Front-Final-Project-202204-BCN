@@ -2,7 +2,7 @@
 
 exports[`Given a Header component page When it's invoked Then it should always match this snapshot 1`] = `
 <header
-  className="sc-gsnTZi eOPogN"
+  className="sc-gsnTZi gejVPh"
 >
   <div
     className="header MuiBox-root css-0"

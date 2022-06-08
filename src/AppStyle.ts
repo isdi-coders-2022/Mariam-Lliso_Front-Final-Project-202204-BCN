@@ -7,7 +7,8 @@ const AppStyle = styled.div`
   justify-content: space-between;
 
   .main {
-    height: 100vh;
+    flex: 1;
+    margin-top: 80px;
   }
 `;
 

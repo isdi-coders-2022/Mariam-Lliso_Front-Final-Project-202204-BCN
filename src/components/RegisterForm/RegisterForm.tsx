@@ -7,7 +7,7 @@ import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { feedbackOffActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import AlertCustom, { IAlertCustom } from "../Layout/AlertCustom/AlertCustom";
-import { userRegisterThunk } from "../../redux/thunks/userThunks";
+import { userRegisterThunk } from "../../redux/thunks/userThunks/userThunks";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = (): JSX.Element => {
