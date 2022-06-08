@@ -1,7 +1,6 @@
-import { DotPulse } from "@uiball/loaders";
 import Establishment from "../../components/Establishment/Establishment";
+import Loader from "../../components/Layout/Loader/Loader";
 import { useAppSelector } from "../../redux/hooks";
-import theme from "../../theme/theme";
 import { IEstablishment } from "../../types/establishmentInterface";
 import EstablishmentPageStyle from "./EstablishmentPageStyle";
 
@@ -13,9 +12,7 @@ const EstablishmentListPage = (): JSX.Element => {
     <EstablishmentPageStyle>
     {
       loading ?
-      (<div className="loading">
-        <DotPulse size={50} speed={1} color={theme.palette.primary.main} />
-      </div>) :
+      (<Loader />) :
       (
         <ul>
           {establishments.map((establishment: IEstablishment) =>
