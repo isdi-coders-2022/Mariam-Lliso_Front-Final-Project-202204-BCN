@@ -9,6 +9,19 @@ const EstablishmentStyle = styled.div`
   margin-bottom: 30px;
   box-shadow: 0px 4px 2px 0px rgb(0 0 0 / 5%);
 
+  @media only screen and (min-width: 769px) {
+    display: flex;
+    gap: 40px;
+
+    .establishment__header {
+      flex: 2;
+    }
+
+    .establishment__container {
+      flex: 2;
+    }
+  }
+
   .establishment__header {
     overflow: hidden;
     height: 150px;
@@ -55,9 +68,6 @@ const EstablishmentStyle = styled.div`
 
   .establishment_location-tittle {
     margin-left: 10px;
-  }
-
-  @media only screen and (max-width: 768px) {
   }
 `;
 

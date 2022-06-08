@@ -19,17 +19,19 @@ const Establishment = (props: Props): JSX.Element => {
           </div>
           <img src="/image/establishment_default.jpg" alt="" className="establishment__image"/>
         </div>
-        <Typography variant="h2" component="h2" className="establishment_tittle">
-          {props.establishment.name}
-        </Typography>
-        <Typography variant="subtitle1" component="h3" color={theme.palette.primary.main} className="establishment_subtittle">
-          {props.establishment.cusine}
-        </Typography>
-        <div className="establishment_location">
-        <NearMeOutlinedIcon /> 
-        <Typography variant="body1" component="h4" className="establishment_location-tittle">
-          {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
-        </Typography>
+        <div className="establishment__container">
+          <Typography variant="h2" component="h2" className="establishment_tittle">
+            {props.establishment.name}
+          </Typography>
+          <Typography variant="subtitle1" component="h3" color={theme.palette.primary.main} className="establishment_subtittle">
+            {props.establishment.cusine}
+          </Typography>
+          <div className="establishment_location">
+          <NearMeOutlinedIcon /> 
+          <Typography variant="body1" component="h4" className="establishment_location-tittle">
+            {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
+          </Typography>
+          </div>
         </div>
       </EstablishmentStyle>
   )
