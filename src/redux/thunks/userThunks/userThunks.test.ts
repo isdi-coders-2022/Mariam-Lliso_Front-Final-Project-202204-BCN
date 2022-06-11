@@ -1,7 +1,12 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { IUserLogin, IUserRegister } from "../../../types/userInterfaces";
-import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../../features/uiSlice/uiSlice";
+import {
+  feedbackOnActionCreator,
+  finishedLoadingUserActionCreator,
+  loadingUserActionCreator,
+  setStatusCodeActionCreator,
+} from "../../features/uiSlice/uiSlice";
 import { userLoginThunk, userRegisterThunk } from "./userThunks";
 
 const mock = new MockAdapter(axios);
@@ -26,12 +31,12 @@ describe("Given the a userThunks", () => {
 
   const userLoginData: IUserLogin = {
     username: "username",
-    password: "password"
-  }
+    password: "password",
+  };
 
   describe("When userRegisterThunk it's invoked with a correct user register data", () => {
-    test("Then it should call dispatch with finishedLoadingActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
-      const expectedActionLoading = finishedLoadingActionCreator();
+    test("Then it should call dispatch with finishedLoadingUserActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
+      const expectedActionLoading = finishedLoadingUserActionCreator();
       const expectedActionfeedback = feedbackOnActionCreator();
       const expectedActionStatus = setStatusCodeActionCreator(201);
       mock.onPost(`${url}user/register`).reply(201);
@@ -47,7 +52,7 @@ describe("Given the a userThunks", () => {
 
   describe("When userRegisterThunk it's invoked with an existen username", () => {
     test("Then it should call dispatch with finishedLoadingActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
-      const expectedActionLoading = finishedLoadingActionCreator();
+      const expectedActionLoading = finishedLoadingUserActionCreator();
       const expectedActionfeedback = feedbackOnActionCreator();
       const expectedActionStatus = setStatusCodeActionCreator(409);
       mock.onPost(`${url}user/register`).reply(409);
@@ -63,7 +68,7 @@ describe("Given the a userThunks", () => {
 
   describe("When userRegisterThunk it's invoked with a incorrect user register data", () => {
     test("Then it should call dispatch with finishedLoadingActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
-      const expectedActionLoading = finishedLoadingActionCreator();
+      const expectedActionLoading = finishedLoadingUserActionCreator();
       const expectedActionfeedback = feedbackOnActionCreator();
       const expectedActionStatus = setStatusCodeActionCreator(400);
       mock.onPost(`${url}user/register`).reply(400);
@@ -80,8 +85,8 @@ describe("Given the a userThunks", () => {
   describe("When userLoginThunk it's invoked with a correct user login data", () => {
     test("Then it should call dispatch with finishedLoadingActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
       const mockToken = "4309850-23459";
-      const expectedActionLoading = loadingActionCreator();
-      const expectedActionLoadingFinish = finishedLoadingActionCreator();
+      const expectedActionLoading = loadingUserActionCreator();
+      const expectedActionLoadingFinish = finishedLoadingUserActionCreator();
       const expectedActionStatus = setStatusCodeActionCreator(0);
       mock.onPost(`${url}user/login`).reply(200, {
         token: mockToken,
@@ -98,10 +103,12 @@ describe("Given the a userThunks", () => {
 
   describe("When userLoginThunk it's invoked with a incorrect user login data", () => {
     test("Then it should call dispatch with finishedLoadingActionCreator, feedbackOnActionCreator and setStatusCodeActionCreator", async () => {
-      const expectedActionLoading = finishedLoadingActionCreator();
+      const expectedActionLoading = finishedLoadingUserActionCreator();
       const expectedActionfeedback = feedbackOnActionCreator();
       const expectedActionStatus = setStatusCodeActionCreator(400);
-      mock.onPost(`${url}user/login`).reply(400, { response: { data: "error" } });
+      mock
+        .onPost(`${url}user/login`)
+        .reply(400, { response: { data: "error" } });
 
       const thunk = await userLoginThunk(userLoginData);
       await thunk(dispatch);

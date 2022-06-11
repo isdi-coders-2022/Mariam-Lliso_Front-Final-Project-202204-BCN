@@ -18,7 +18,7 @@ const Establishment = (props: Props): JSX.Element => {
             )}
           </div>
           <div className="establishment__image">
-            <img src="/image/establishment_default.jpg" alt=""/>
+            <img src={props.establishment.pictureBackup ? props.establishment.pictureBackup : "/image/establishment_default.jpg"} alt={props.establishment.name}/>
           </div>
         </div>
         <div className="establishment__container">

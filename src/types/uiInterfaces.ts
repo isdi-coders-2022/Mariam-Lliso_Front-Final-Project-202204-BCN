@@ -1,7 +1,8 @@
 export interface IUserInterface {
-  loading: boolean,
-  feedback: boolean,
-  statusCode: number
+  loading: boolean;
+  loadingUser: boolean;
+  feedback: boolean;
+  statusCode: number;
 }
 
 export type IErrorCode = number;

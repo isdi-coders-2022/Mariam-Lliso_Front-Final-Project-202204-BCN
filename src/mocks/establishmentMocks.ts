@@ -18,6 +18,7 @@ export const mockEstablishments: IEstablishment[] = [
     emails: "",
     website: "",
     picture: "",
+    pictureBackup: "",
     id: "id1234",
   },
   {
@@ -32,6 +33,7 @@ export const mockEstablishments: IEstablishment[] = [
     emails: "@",
     website: ".com",
     picture: "foto.jpg",
+    pictureBackup: "foto.jpg",
     id: "id5678",
   },
 ];
@@ -58,5 +60,6 @@ export const mockEstablishment: IEstablishment = {
   emails: "info@restaurantelagrava.es",
   website: "",
   picture: "",
+  pictureBackup: "",
   id: "629c6fab590f5fafee717fec",
 };
