@@ -7,17 +7,9 @@ import { useNavigate } from "react-router-dom";
 const Navigation = () => {
   const navigate = useNavigate();
 
-  const navigateToEstablishmentList = () => {
-    navigate("/establishment/list");
-  };
-
-  const navigateToLogin = () => {
-    navigate("/login");
-  };
-
   return (
   <NavigationStyle>
-    <Button className="navigation__tab" onClick={navigateToEstablishmentList}>
+    <Button className="navigation__tab" onClick={() => navigate("/establishment/list")}>
       <div className="navigation__icon">
         <StorefrontIcon />
       </div>
@@ -25,7 +17,7 @@ const Navigation = () => {
         lugares
       </Typography>
     </Button>
-    <Button className="navigation__tab" onClick={navigateToLogin}>
+    <Button className="navigation__tab" onClick={() => navigate("/login")} >
       <div className="navigation__icon">
         <PermIdentityIcon />
       </div>
