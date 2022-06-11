@@ -23,6 +23,7 @@ export interface IEstablishment {
   emails: string;
   website: string;
   picture: string;
+  pictureBackup: string;
   id: string;
 }
 

@@ -7,10 +7,11 @@ import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { userLoginThunk } from "../../redux/thunks/userThunks/userThunks";
 import { useNavigate } from "react-router-dom";
+import { IUserInterface } from "../../types/uiInterfaces";
 
 const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { loading } = useAppSelector((state) => state.ui);
+  const { loadingUser } = useAppSelector<IUserInterface>((state) => state.ui);
 
   const formInitialState: IUserLogin = {
     username: "",
@@ -108,7 +109,7 @@ const LoginForm = (): JSX.Element => {
           <FormHelperText id="password-helpertext" error={errors.password}>{errors.password ? "La contraseña es obligatoria" : " "}</FormHelperText>
         </FormControl>
 
-        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={loading}>
+        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={loadingUser}>
           iniciar sesión
         </LoadingButton>
 

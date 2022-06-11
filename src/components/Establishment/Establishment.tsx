@@ -17,7 +17,9 @@ const Establishment = (props: Props): JSX.Element => {
               <span className="establishment__label" key={type.code}>{type.description}</span>
             )}
           </div>
-          <img src="/image/establishment_default.jpg" alt="" className="establishment__image"/>
+          <div className="establishment__image">
+            <img src={props.establishment.pictureBackup ? props.establishment.pictureBackup : "/image/establishment_default.jpg"} alt={props.establishment.name}/>
+          </div>
         </div>
         <div className="establishment__container">
           <Typography variant="h2" component="h2" className="establishment_tittle">
@@ -32,6 +34,9 @@ const Establishment = (props: Props): JSX.Element => {
             {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
           </Typography>
           </div>
+        </div>
+        <div className="establishment__footer">
+          <p>hola</p>
         </div>
       </EstablishmentStyle>
   )

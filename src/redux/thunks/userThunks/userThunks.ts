@@ -1,8 +1,20 @@
 import axios, { AxiosResponse } from "axios";
-import { IUserLoged, IUserLogin, IUserRegister } from "../../../types/userInterfaces";
-import { userLoginEndpoint, userRegisterEndpoint } from "../../../routes/userEndpoints";
+import {
+  IUserLoged,
+  IUserLogin,
+  IUserRegister,
+} from "../../../types/userInterfaces";
+import {
+  userLoginEndpoint,
+  userRegisterEndpoint,
+} from "../../../routes/userEndpoints";
 import { rolUser } from "../../../utils/userRols";
-import { feedbackOnActionCreator, finishedLoadingActionCreator, loadingActionCreator, setStatusCodeActionCreator } from "../../features/uiSlice/uiSlice";
+import {
+  feedbackOnActionCreator,
+  finishedLoadingUserActionCreator,
+  loadingUserActionCreator,
+  setStatusCodeActionCreator,
+} from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "../../features/userSlice/userSlice";
@@ -13,41 +25,41 @@ export const userRegisterThunk =
   (userData: IUserRegister) => async (dispatch: AppDispatch) => {
     const userRegisterData: IUserRegister = {
       ...userData,
-      userRol: rolUser
-    }
+      userRol: rolUser,
+    };
 
-    dispatch(loadingActionCreator());
+    dispatch(loadingUserActionCreator());
     dispatch(setStatusCodeActionCreator(0));
 
-    await axios.post(`${url}${userRegisterEndpoint}`, userRegisterData)
+    await axios
+      .post(`${url}${userRegisterEndpoint}`, userRegisterData)
       .then((response: AxiosResponse) => {
-        dispatch(finishedLoadingActionCreator());
-        dispatch(feedbackOnActionCreator())
+        dispatch(finishedLoadingUserActionCreator());
+        dispatch(feedbackOnActionCreator());
         dispatch(setStatusCodeActionCreator(response.status));
-
       })
       .catch((error: any) => {
-        dispatch(finishedLoadingActionCreator());
+        dispatch(finishedLoadingUserActionCreator());
 
         if (error.response) {
-          dispatch(feedbackOnActionCreator())
+          dispatch(finishedLoadingUserActionCreator());
+          dispatch(feedbackOnActionCreator());
           dispatch(setStatusCodeActionCreator(error.response.status));
         }
       });
   };
 
-
 export const userLoginThunk =
   (userData: IUserLogin) => async (dispatch: AppDispatch) => {
     const userloginData: IUserLogin = {
-      ...userData
-    }
+      ...userData,
+    };
 
-    dispatch(loadingActionCreator());
+    dispatch(loadingUserActionCreator());
     dispatch(setStatusCodeActionCreator(0));
 
-
-    await axios.post(`${url}${userLoginEndpoint}`, userloginData)
+    await axios
+      .post(`${url}${userLoginEndpoint}`, userloginData)
       .then((response: AxiosResponse) => {
         const token = response.data.token;
         const decodeToken: IUserLoged = jwtDecode(token);
@@ -55,16 +67,16 @@ export const userLoginThunk =
 
         dispatch(loginActionCreator(decodeToken));
 
-        dispatch(finishedLoadingActionCreator());
-        dispatch(feedbackOnActionCreator())
+        dispatch(finishedLoadingUserActionCreator());
+        dispatch(feedbackOnActionCreator());
         dispatch(setStatusCodeActionCreator(response.status));
-
       })
       .catch((error: any) => {
-        dispatch(finishedLoadingActionCreator());
+        dispatch(finishedLoadingUserActionCreator());
 
         if (error.response) {
-          dispatch(feedbackOnActionCreator())
+          dispatch(finishedLoadingUserActionCreator());
+          dispatch(feedbackOnActionCreator());
           dispatch(setStatusCodeActionCreator(error.response.status));
         }
       });
