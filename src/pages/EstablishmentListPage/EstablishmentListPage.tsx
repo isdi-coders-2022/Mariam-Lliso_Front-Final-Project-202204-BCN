@@ -2,7 +2,7 @@ import Establishment from "../../components/Establishment/Establishment";
 import Loader from "../../components/Layout/Loader/Loader";
 import { useAppSelector } from "../../redux/hooks";
 import { IEstablishment } from "../../types/establishmentInterface";
-import EstablishmentPageStyle from "./EstablishmentPageStyle";
+import { EstablishmentListStyle, EstablishmentPageStyle } from "./EstablishmentPageStyle";
 
 const EstablishmentListPage = (): JSX.Element => {
   const { loading } = useAppSelector((state) => state.ui);
@@ -14,13 +14,13 @@ const EstablishmentListPage = (): JSX.Element => {
       loading ?
       (<Loader />) :
       (
-        <ul>
+        <EstablishmentListStyle>
           {establishments.map((establishment: IEstablishment) =>
             <li key={establishment.name}>
               <Establishment establishment={establishment} />
             </li>
           )}
-        </ul>
+        </EstablishmentListStyle>
       )
     }
     </EstablishmentPageStyle>
