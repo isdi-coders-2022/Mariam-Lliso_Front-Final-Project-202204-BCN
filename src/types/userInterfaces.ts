@@ -37,3 +37,15 @@ export interface IValidationUserLogin {
 }
 
 export type Token = string | null;
+
+export interface IUserProfile {
+  name: string;
+  surnames: string;
+  username: string;
+  userRol: IUserRol;
+}
+
+export interface IUserRol {
+  code: string;
+  description: string;
+}
