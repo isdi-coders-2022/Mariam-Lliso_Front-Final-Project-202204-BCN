@@ -2,7 +2,7 @@
 
 exports[`When it's invoked Then it should always match this snapshot 1`] = `
 <div
-  className="sc-bczRLJ hIKPoH"
+  className="sc-gsnTZi esGYSl"
 >
   <h2
     className="MuiTypography-root MuiTypography-h1 register_tittle css-o2w69a-MuiTypography-root"

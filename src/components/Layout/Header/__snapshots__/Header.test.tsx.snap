@@ -19,7 +19,7 @@ exports[`Given a Header component page When it's invoked Then it should always m
         className="sc-bczRLJ iVncec"
       >
         <button
-          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-ur4yn8-MuiButtonBase-root-MuiButton-root"
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-1o3x8ec-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -59,7 +59,7 @@ exports[`Given a Header component page When it's invoked Then it should always m
           </span>
         </button>
         <button
-          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-ur4yn8-MuiButtonBase-root-MuiButton-root"
+          className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root navigation__tab css-1o3x8ec-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}

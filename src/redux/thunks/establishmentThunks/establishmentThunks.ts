@@ -18,8 +18,6 @@ export const loadEstablishmentThunk = () => async (dispatch: AppDispatch) => {
 
     if (data.establishments.lenght !== 0) {
       dispatch(loadEstablishmentsActionCreator(data));
-    } else {
-      dispatch(finishedLoadingActionCreator());
     }
   } catch (error: any) {
     dispatch(finishedLoadingActionCreator());
