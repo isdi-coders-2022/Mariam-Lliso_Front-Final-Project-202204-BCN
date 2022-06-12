@@ -171,7 +171,7 @@ const theme = createTheme({
     MuiButtonBase: {
       styleOverrides: {
         root: {
-          letterSpacing: "0.2em",
+          letterSpacing: "0.1em",
         },
       },
       defaultProps: {

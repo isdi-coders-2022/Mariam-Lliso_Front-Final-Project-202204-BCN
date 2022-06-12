@@ -6,6 +6,7 @@ import {
 } from "../../../types/userInterfaces";
 import {
   userLoginEndpoint,
+  userProfileEndpoint,
   userRegisterEndpoint,
 } from "../../../routes/userEndpoints";
 import { rolUser } from "../../../utils/userRols";
@@ -21,6 +22,7 @@ import {
   loginActionCreator,
   logoutActionCreator,
 } from "../../features/userSlice/userSlice";
+import { setProfileActionCreator } from "../../features/userProfileSlice/userProfileSlice";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -88,4 +90,19 @@ export const userLoginThunk =
 export const logOutUserThunk = () => (dispatch: AppDispatch) => {
   localStorage.removeItem("token");
   dispatch(logoutActionCreator());
+};
+
+export const userProfileThunk = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(loadingUserActionCreator());
+    const { data } = await axios.get(`${url}${userProfileEndpoint}`, {
+      headers: { Authorization: `Bearer ${localStorage.token}` },
+    });
+
+    dispatch(setProfileActionCreator(data));
+    dispatch(finishedLoadingUserActionCreator());
+  } catch (error: any) {
+    dispatch(finishedLoadingUserActionCreator());
+    dispatch(feedbackOnActionCreator());
+  }
 };

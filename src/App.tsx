@@ -9,11 +9,14 @@ import { useEffect } from "react";
 import { loadEstablishmentThunk } from "./redux/thunks/establishmentThunks/establishmentThunks";
 import { useAppDispatch } from "./redux/hooks";
 import UserCredentialsValidation from "./components/UserCredentialsValidation/UserCredentialsValidation";
-import UserProfile from "./components/UserProfile/UserProfile";
 import { IUserLoged, Token } from "./types/userInterfaces";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
-import { logOutUserThunk } from "./redux/thunks/userThunks/userThunks";
+import {
+  logOutUserThunk,
+  userProfileThunk,
+} from "./redux/thunks/userThunks/userThunks";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +26,7 @@ const App = () => {
     if (token) {
       const userData: IUserLoged = jwtDecode(token);
       dispatch(loginActionCreator(userData));
+      dispatch(userProfileThunk());
     } else {
       dispatch(logOutUserThunk());
     }
@@ -46,7 +50,7 @@ const App = () => {
             path="/user/profile"
             element={
               <UserCredentialsValidation>
-                <UserProfile />
+                <UserProfilePage />
               </UserCredentialsValidation>
             }
           />
