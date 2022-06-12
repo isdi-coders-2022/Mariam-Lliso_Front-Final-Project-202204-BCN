@@ -1,6 +1,17 @@
-import { mockEstablishments } from "../../../mocks/establishmentMocks";
-import { IEstablishmentState } from "../../../types/establishmentInterface";
-import establishmentSlice, { loadEstablishmentsActionCreator } from "./establishmentSlice";
+import {
+  mockDictionary,
+  mockEstablishment,
+  mockEstablishments,
+} from "../../../mocks/establishmentMocks";
+import {
+  IEstablishment,
+  IEstablishmentState,
+} from "../../../types/establishmentInterface";
+import establishmentSlice, {
+  createEstablishmentActionCreator,
+  deleteEstablishmentActionCreator,
+  loadEstablishmentsActionCreator,
+} from "./establishmentSlice";
 
 describe("Given the loadActionCreator", () => {
   describe("When invoked", () => {
@@ -10,14 +21,14 @@ describe("Given the loadActionCreator", () => {
         currentPage: 0,
         nextPage: null,
         previousPage: null,
-        establishments: []
+        establishments: [],
       };
       const expectedState: IEstablishmentState = {
         totalEstablishments: 0,
         currentPage: 0,
         nextPage: null,
         previousPage: null,
-        establishments: mockEstablishments
+        establishments: mockEstablishments,
       };
 
       const action = loadEstablishmentsActionCreator(expectedState);
@@ -28,3 +39,78 @@ describe("Given the loadActionCreator", () => {
   });
 });
 
+describe("Given the deleteEstablishmentActionCreator", () => {
+  describe("When invoked with the id to be deleted", () => {
+    test("Then the item with the id will be deleted from the establishment list", () => {
+      const initialState: IEstablishmentState = {
+        totalEstablishments: 0,
+        currentPage: 0,
+        nextPage: null,
+        previousPage: null,
+        establishments: mockEstablishments,
+      };
+
+      const mockEstablishmentsResult: IEstablishment[] = [
+        {
+          establishmentType: [mockDictionary],
+          name: "Sitio de comer 2",
+          cusine: "Cocina no tan rica",
+          establishmentOffer: [mockDictionary],
+          adress: "Avenida calle",
+          municipality: "Alicante",
+          region: "Benidorm",
+          phones: null,
+          emails: "@",
+          website: ".com",
+          picture: "foto.jpg",
+          pictureBackup: "foto.jpg",
+          id: "id5678",
+        },
+      ];
+
+      const expectedState: IEstablishmentState = {
+        totalEstablishments: 0,
+        currentPage: 0,
+        nextPage: null,
+        previousPage: null,
+        establishments: mockEstablishmentsResult,
+      };
+
+      const id = "id1234";
+
+      const action = deleteEstablishmentActionCreator(id);
+      const state = establishmentSlice(initialState, action);
+
+      expect(state).toEqual(expectedState);
+    });
+  });
+});
+
+describe("Given a createEstablishment reducer", () => {
+  describe("When it receives an action to create a new establishment", () => {
+    test("Then it should create a new property", () => {
+      const initialState: IEstablishmentState = {
+        totalEstablishments: 0,
+        currentPage: 0,
+        nextPage: null,
+        previousPage: null,
+        establishments: [mockEstablishment],
+      };
+      const createAction = createEstablishmentActionCreator(mockEstablishment);
+
+      const expectedState: IEstablishmentState = {
+        totalEstablishments: 0,
+        currentPage: 0,
+        nextPage: null,
+        previousPage: null,
+        establishments: [mockEstablishment, mockEstablishment],
+      };
+
+      const establishmentStatus = establishmentSlice(
+        initialState,
+        createAction
+      );
+      expect(establishmentStatus).toEqual(expectedState);
+    });
+  });
+});

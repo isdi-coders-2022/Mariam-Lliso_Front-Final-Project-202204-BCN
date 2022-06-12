@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IEstablishmentState } from "../../../types/establishmentInterface";
+import {
+  IEstablishment,
+  IEstablishmentState,
+} from "../../../types/establishmentInterface";
 
 const initialState: IEstablishmentState = {
   totalEstablishments: 0,
@@ -26,11 +29,19 @@ const establishmentSlice = createSlice({
         (establishment) => establishment.id !== action.payload
       ),
     }),
+    createEstablishment: (
+      establishmentState,
+      action: PayloadAction<IEstablishment>
+    ) => ({
+      ...establishmentState,
+      establishments: [...establishmentState.establishments, action.payload],
+    }),
   },
 });
 
 export const {
   loadEstablishments: loadEstablishmentsActionCreator,
   deleteEstablishment: deleteEstablishmentActionCreator,
+  createEstablishment: createEstablishmentActionCreator,
 } = establishmentSlice.actions;
 export default establishmentSlice.reducer;
