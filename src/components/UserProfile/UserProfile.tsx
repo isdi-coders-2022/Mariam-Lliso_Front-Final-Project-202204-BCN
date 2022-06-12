@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { IUserProfile } from "../../types/userInterfaces";
 import UserProfileStyle from "./UserProfileStyle";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
@@ -6,11 +6,20 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import { Button, Typography } from "@mui/material";
 import theme from "../../theme/theme";
 import { rolAdmin } from "../../utils/userRols";
+import { logOutUserThunk } from "../../redux/thunks/userThunks/userThunks";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
+  const dispach = useAppDispatch();
+  const navigate = useNavigate();
   const userProfile = useAppSelector<IUserProfile>(
     (state) => state.userProfile
   );
+
+  const finishSesion = () => {
+    dispach(logOutUserThunk());
+    navigate("/login");
+  };
 
   return (
     <UserProfileStyle>
@@ -62,7 +71,13 @@ const UserProfile = () => {
                 crear un establecimiento
               </Button>
             )}
-            <Button fullWidth size="large" type="submit" variant="outlined">
+            <Button
+              fullWidth
+              size="large"
+              type="submit"
+              variant="outlined"
+              onClick={finishSesion}
+            >
               cerrar sesión
             </Button>
           </div>
