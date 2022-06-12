@@ -8,6 +8,7 @@ import theme from "../../theme/theme";
 import { rolAdmin } from "../../utils/userRols";
 import { logOutUserThunk } from "../../redux/thunks/userThunks/userThunks";
 import { useNavigate } from "react-router-dom";
+import { resetProfileActionCreator } from "../../redux/features/userProfileSlice/userProfileSlice";
 
 const UserProfile = () => {
   const dispach = useAppDispatch();
@@ -18,6 +19,7 @@ const UserProfile = () => {
 
   const finishSesion = () => {
     dispach(logOutUserThunk());
+    dispach(resetProfileActionCreator());
     navigate("/login");
   };
 

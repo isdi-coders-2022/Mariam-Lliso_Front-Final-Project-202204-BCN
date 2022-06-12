@@ -49,6 +49,7 @@ const UserProfileStyle = styled.div`
 
   .profile-content__actions {
     display: flex;
+    justify-content: space-around;
   }
 
   .profile-content__actions-buttons {

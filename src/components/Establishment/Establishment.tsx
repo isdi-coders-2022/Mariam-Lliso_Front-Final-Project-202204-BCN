@@ -1,45 +1,106 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { IEstablishment } from "../../types/establishmentInterface";
 import EstablishmentStyle from "./EstablishmentStyle";
 import theme from "../../theme/theme";
-import NearMeOutlinedIcon from '@mui/icons-material/NearMeOutlined';
+import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
+import { rolAdmin } from "../../utils/userRols";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { IUserState } from "../../types/userInterfaces";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentThunks/establishmentThunks";
 
 interface Props {
   establishment: IEstablishment;
 }
 
 const Establishment = (props: Props): JSX.Element => {
+  const user = useAppSelector<IUserState>((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const deleteEstablishment = () => {
+    dispatch(deleteEstablishmentThunk(props.establishment.id));
+  };
+
   return (
-      <EstablishmentStyle>
-        <div className="establishment__header">
-          <div className="establishment__labels">
-            {props.establishment.establishmentType.map((type) => 
-              <span className="establishment__label" key={type.code}>{type.description}</span>
-            )}
-          </div>
-          <div className="establishment__image">
-            <img src={props.establishment.pictureBackup ? props.establishment.pictureBackup : "/image/establishment_default.jpg"} alt={props.establishment.name}/>
-          </div>
+    <EstablishmentStyle>
+      <div className="establishment__header">
+        <div className="establishment__labels">
+          {props.establishment.establishmentType.map((type) => (
+            <span className="establishment__label" key={type.code}>
+              {type.description}
+            </span>
+          ))}
         </div>
-        <div className="establishment__container">
-          <Typography variant="h2" component="h2" className="establishment_tittle">
-            {props.establishment.name}
-          </Typography>
-          <Typography variant="subtitle1" component="h3" color={theme.palette.primary.main} className="establishment_subtittle">
-            {props.establishment.cusine}
-          </Typography>
-          <div className="establishment_location">
-          <NearMeOutlinedIcon /> 
-          <Typography variant="body1" component="h4" className="establishment_location-tittle">
+        <div className="establishment__image">
+          <img
+            src={
+              props.establishment.pictureBackup
+                ? props.establishment.pictureBackup
+                : "/image/establishment_default.jpg"
+            }
+            alt={props.establishment.name}
+          />
+        </div>
+      </div>
+      <div className="establishment__container">
+        <Typography
+          variant="h2"
+          component="h2"
+          className="establishment_tittle"
+        >
+          {props.establishment.name}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          component="h3"
+          color={theme.palette.primary.main}
+          className="establishment_subtittle"
+        >
+          {props.establishment.cusine}
+        </Typography>
+        <div className="establishment_location">
+          <NearMeOutlinedIcon />
+          <Typography
+            variant="body1"
+            component="h4"
+            className="establishment_location-tittle"
+          >
             {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
           </Typography>
-          </div>
         </div>
-        <div className="establishment__footer">
-          <p>hola</p>
+      </div>
+      <div className="establishment__footer">
+        <div className="establishment__footer-actions">
+          {user.userData.userRol === rolAdmin && (
+            <>
+              <Button
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                startIcon={<EditOutlinedIcon />}
+                className="establishment__footer-actions--edit"
+              >
+                editar
+              </Button>
+              <Button
+                onClick={deleteEstablishment}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                startIcon={<DeleteOutlinedIcon />}
+                className="establishment__footer-actions--delete"
+              >
+                eliminar
+              </Button>
+            </>
+          )}
         </div>
-      </EstablishmentStyle>
-  )
-}
+      </div>
+    </EstablishmentStyle>
+  );
+};
 
 export default Establishment;
