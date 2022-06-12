@@ -7,7 +7,11 @@ import {
   loadingUserActionCreator,
   setStatusCodeActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { userLoginThunk, userRegisterThunk } from "./userThunks";
+import {
+  logOutUserThunk,
+  userLoginThunk,
+  userRegisterThunk,
+} from "./userThunks";
 
 const mock = new MockAdapter(axios);
 const url = process.env.REACT_APP_API_URL;
@@ -116,6 +120,18 @@ describe("Given the a userThunks", () => {
       expect(dispatch).toHaveBeenCalledWith(expectedActionLoading);
       expect(dispatch).toHaveBeenCalledWith(expectedActionfeedback);
       expect(dispatch).toHaveBeenCalledWith(expectedActionStatus);
+    });
+  });
+
+  describe("When logOutUserThunk is called", () => {
+    test("Then the dispatch function will be called 3 times", async () => {
+      const dispatch = jest.fn();
+      const thunk = logOutUserThunk();
+      await thunk(dispatch);
+
+      const expectedNumberOfCalls = 1;
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedNumberOfCalls);
     });
   });
 });

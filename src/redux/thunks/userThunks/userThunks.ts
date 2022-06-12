@@ -17,7 +17,10 @@ import {
 } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
 import jwtDecode from "jwt-decode";
-import { loginActionCreator } from "../../features/userSlice/userSlice";
+import {
+  loginActionCreator,
+  logoutActionCreator,
+} from "../../features/userSlice/userSlice";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -81,3 +84,8 @@ export const userLoginThunk =
         }
       });
   };
+
+export const logOutUserThunk = () => (dispatch: AppDispatch) => {
+  localStorage.removeItem("token");
+  dispatch(logoutActionCreator());
+};
