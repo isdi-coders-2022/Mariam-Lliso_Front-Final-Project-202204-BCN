@@ -6,18 +6,31 @@ const initialState: IEstablishmentState = {
   currentPage: 0,
   nextPage: null,
   previousPage: null,
-  establishments: []
+  establishments: [],
 };
 
 const establishmentSlice = createSlice({
   name: "establishment",
   initialState,
   reducers: {
-    loadEstablishments: (establishmentState, action: PayloadAction<IEstablishmentState>) => ({ ...action.payload })
+    loadEstablishments: (
+      establishmentState,
+      action: PayloadAction<IEstablishmentState>
+    ) => ({ ...action.payload }),
+    deleteEstablishment: (
+      establishmentState,
+      action: PayloadAction<string>
+    ) => ({
+      ...establishmentState,
+      establishments: establishmentState.establishments.filter(
+        (establishment) => establishment.id !== action.payload
+      ),
+    }),
   },
 });
 
 export const {
   loadEstablishments: loadEstablishmentsActionCreator,
+  deleteEstablishment: deleteEstablishmentActionCreator,
 } = establishmentSlice.actions;
 export default establishmentSlice.reducer;

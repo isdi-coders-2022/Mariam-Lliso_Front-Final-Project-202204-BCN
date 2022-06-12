@@ -71,6 +71,7 @@ export const userLoginThunk =
         localStorage.setItem("token", token);
 
         dispatch(loginActionCreator(decodeToken));
+        dispatch(userProfileThunk());
 
         dispatch(finishedLoadingUserActionCreator());
         dispatch(feedbackOnActionCreator());
