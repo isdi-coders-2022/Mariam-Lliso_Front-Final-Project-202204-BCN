@@ -34,7 +34,6 @@ export const loadEstablishmentThunk = () => async (dispatch: AppDispatch) => {
 
 export const deleteEstablishmentThunk =
   (id: string) => async (dispatch: AppDispatch) => {
-    console.log(id);
     try {
       dispatch(loadingActionCreator());
       const { status } = await axios.delete(
