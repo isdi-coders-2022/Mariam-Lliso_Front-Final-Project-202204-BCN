@@ -19,11 +19,34 @@ export interface IEstablishment {
   adress: string;
   municipality: string;
   region: string;
-  phones: number | null;
-  emails: string | null;
+  phone: number | null;
+  email: string | null;
   website: string | null;
   picture: string | null;
   pictureBackup: string | null;
+  id: string;
+}
+
+export interface IValidationEstablishment {
+  establishmentType: boolean;
+  name: boolean;
+  adress: boolean;
+  municipality: boolean;
+  region: boolean;
+}
+
+export interface IEstablishmentAddEdit {
+  establishmentType: string;
+  name: string;
+  cusine?: string;
+  establishmentOffer?: string;
+  adress: string;
+  municipality: string;
+  region: string;
+  phone?: string | null;
+  email?: string | null;
+  website?: string | null;
+  image?: string | null;
   id: string;
 }
 

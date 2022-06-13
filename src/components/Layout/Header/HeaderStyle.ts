@@ -8,7 +8,7 @@ const HeaderStyle = styled.header`
   border-radius: 0 0 10px 10px;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 9;
 
   .header {
     display: flex;

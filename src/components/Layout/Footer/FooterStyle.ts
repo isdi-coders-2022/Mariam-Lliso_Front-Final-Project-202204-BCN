@@ -3,6 +3,7 @@ import theme from "../../../theme/theme";
 
 const FooterStyle = styled.footer`
   @media only screen and (max-width: 768px) {
+    z-index: 9;
     position: sticky;
     bottom: 0;
     padding: 1rem clamp(1rem, 5%, 3rem);

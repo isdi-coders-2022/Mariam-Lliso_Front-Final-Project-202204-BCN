@@ -27,7 +27,6 @@ const UserProfileStyle = styled.div`
 
   .profile-content {
     background-color: white;
-    height: 100vh;
     padding: 1.5rem clamp(1rem, 5%, 3rem);
     padding-top: 60px;
     border-radius: 20px;

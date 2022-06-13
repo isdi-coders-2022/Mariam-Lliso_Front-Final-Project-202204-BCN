@@ -23,6 +23,10 @@ const UserProfile = () => {
     navigate("/login");
   };
 
+  const createEstablisment = () => {
+    navigate("/establishment/add");
+  };
+
   return (
     <UserProfileStyle>
       <div className="profile-image-container">
@@ -69,7 +73,13 @@ const UserProfile = () => {
         <div className="profile-content__actions">
           <div className="profile-content__actions-buttons">
             {userProfile.userRol.code === rolAdmin && (
-              <Button fullWidth size="large" type="submit" variant="contained">
+              <Button
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                onClick={createEstablisment}
+              >
                 crear un establecimiento
               </Button>
             )}

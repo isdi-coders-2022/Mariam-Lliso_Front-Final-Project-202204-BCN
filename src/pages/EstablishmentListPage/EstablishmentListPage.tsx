@@ -18,7 +18,7 @@ const EstablishmentListPage = (): JSX.Element => {
       ) : (
         <EstablishmentListStyle>
           {establishments.map((establishment: IEstablishment) => (
-            <li key={establishment.name}>
+            <li key={establishment.id}>
               <Establishment establishment={establishment} />
             </li>
           ))}
