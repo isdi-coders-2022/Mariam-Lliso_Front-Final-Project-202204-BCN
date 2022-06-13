@@ -6,7 +6,7 @@ import {
 import {
   deleteEstablishmentActionCreator,
   loadEstablishmentsActionCreator,
-} from "../../features/establishmentSlice/establishmentSlice";
+} from "../../features/establishmentsSlice/establishmentsSlice";
 import {
   feedbackOnActionCreator,
   finishedLoadingActionCreator,

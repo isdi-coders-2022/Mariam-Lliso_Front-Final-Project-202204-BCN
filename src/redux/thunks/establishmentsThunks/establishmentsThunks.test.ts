@@ -5,11 +5,11 @@ import {
 import {
   deleteEstablishmentActionCreator,
   loadEstablishmentsActionCreator,
-} from "../../features/establishmentSlice/establishmentSlice";
+} from "../../features/establishmentsSlice/establishmentsSlice";
 import {
   deleteEstablishmentThunk,
   loadEstablishmentThunk,
-} from "./establishmentThunks";
+} from "./establishmentsThunks";
 import { server } from "../mocks/server/server";
 import {
   feedbackOnActionCreator,

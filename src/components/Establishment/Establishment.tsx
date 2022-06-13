@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { IUserState } from "../../types/userInterfaces";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentThunks/establishmentThunks";
+import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 
 interface Props {
   establishment: IEstablishment;

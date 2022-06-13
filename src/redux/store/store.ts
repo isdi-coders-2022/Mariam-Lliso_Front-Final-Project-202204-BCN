@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import establishmentSliceReducer from "../features/establishmentSlice/establishmentSlice";
+import establishmentsSliceReducer from "../features/establishmentsSlice/establishmentsSlice";
 import uiSliceReducer from "../features/uiSlice/uiSlice";
 import userProfileSliceReducer from "../features/userProfileSlice/userProfileSlice";
 import userSliceReducer from "../features/userSlice/userSlice";
@@ -9,7 +9,7 @@ const store = configureStore({
     ui: uiSliceReducer,
     user: userSliceReducer,
     userProfile: userProfileSliceReducer,
-    establishment: establishmentSliceReducer,
+    establishment: establishmentsSliceReducer,
   },
 });
 

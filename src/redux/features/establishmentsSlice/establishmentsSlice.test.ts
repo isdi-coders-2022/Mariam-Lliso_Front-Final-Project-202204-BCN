@@ -7,11 +7,11 @@ import {
   IEstablishment,
   IEstablishmentState,
 } from "../../../types/establishmentInterface";
-import establishmentSlice, {
+import establishmentsSlice, {
   createEstablishmentActionCreator,
   deleteEstablishmentActionCreator,
   loadEstablishmentsActionCreator,
-} from "./establishmentSlice";
+} from "./establishmentsSlice";
 
 describe("Given the loadActionCreator", () => {
   describe("When invoked", () => {
@@ -32,7 +32,7 @@ describe("Given the loadActionCreator", () => {
       };
 
       const action = loadEstablishmentsActionCreator(expectedState);
-      const loadedState = establishmentSlice(initialState, action);
+      const loadedState = establishmentsSlice(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
     });
@@ -79,7 +79,7 @@ describe("Given the deleteEstablishmentActionCreator", () => {
       const id = "id1234";
 
       const action = deleteEstablishmentActionCreator(id);
-      const state = establishmentSlice(initialState, action);
+      const state = establishmentsSlice(initialState, action);
 
       expect(state).toEqual(expectedState);
     });
@@ -106,7 +106,7 @@ describe("Given a createEstablishment reducer", () => {
         establishments: [mockEstablishment, mockEstablishment],
       };
 
-      const establishmentStatus = establishmentSlice(
+      const establishmentStatus = establishmentsSlice(
         initialState,
         createAction
       );
