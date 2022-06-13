@@ -17,6 +17,7 @@ import {
   userProfileThunk,
 } from "./redux/thunks/userThunks/userThunks";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
+import AddEditPage from "./pages/addEditPage/AddEditPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -51,6 +52,22 @@ const App = () => {
             element={
               <UserCredentialsValidation>
                 <UserProfilePage />
+              </UserCredentialsValidation>
+            }
+          />
+          <Route
+            path="/establishment/add"
+            element={
+              <UserCredentialsValidation>
+                <AddEditPage />
+              </UserCredentialsValidation>
+            }
+          />
+          <Route
+            path="/establishment/edit/:establishmentId"
+            element={
+              <UserCredentialsValidation>
+                <AddEditPage />
               </UserCredentialsValidation>
             }
           />

@@ -9,6 +9,7 @@ const AppStyle = styled.div`
   .main {
     flex: 1;
     margin-top: 80px;
+    display: flex;
   }
 `;
 
