@@ -1,9 +1,11 @@
 import axios from "axios";
 import {
+  createEstablishmentEndpoint,
   deleteEstablishmentsEndpoint,
   establishmentsListEndpoint,
 } from "../../../routes/establishmentEndpoints";
 import {
+  createEstablishmentActionCreator,
   deleteEstablishmentActionCreator,
   loadEstablishmentsActionCreator,
 } from "../../features/establishmentsSlice/establishmentsSlice";
@@ -46,6 +48,27 @@ export const deleteEstablishmentThunk =
 
       dispatch(setStatusCodeActionCreator(status));
       dispatch(deleteEstablishmentActionCreator(id));
+    } catch (error: any) {
+      dispatch(finishedLoadingActionCreator());
+      dispatch(feedbackOnActionCreator());
+    }
+  };
+
+export const createEstablishmentThunk =
+  (formData: any) => async (dispatch: AppDispatch) => {
+    try {
+      console.log(formData);
+      dispatch(loadingActionCreator());
+      const {
+        data: { createdEstablishment },
+        status,
+      } = await axios.post(`${url}${createEstablishmentEndpoint}`, formData, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+      });
+
+      dispatch(createEstablishmentActionCreator(createdEstablishment));
+      dispatch(finishedLoadingActionCreator());
+      dispatch(setStatusCodeActionCreator(status));
     } catch (error: any) {
       dispatch(finishedLoadingActionCreator());
       dispatch(feedbackOnActionCreator());
