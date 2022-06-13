@@ -1,5 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
+import { mockUserProfile } from "../../../mocks/userMocks";
 import { IUserLogin, IUserRegister } from "../../../types/userInterfaces";
 import {
   feedbackOnActionCreator,
@@ -7,9 +8,11 @@ import {
   loadingUserActionCreator,
   setStatusCodeActionCreator,
 } from "../../features/uiSlice/uiSlice";
+import { setProfileActionCreator } from "../../features/userProfileSlice/userProfileSlice";
 import {
   logOutUserThunk,
   userLoginThunk,
+  userProfileThunk,
   userRegisterThunk,
 } from "./userThunks";
 
@@ -130,6 +133,17 @@ describe("Given the a userThunks", () => {
       await thunk(dispatch);
 
       const expectedNumberOfCalls = 1;
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedNumberOfCalls);
+    });
+  });
+
+  describe("When userProfileThunk is called", () => {
+    test("Then the dispatch function should call the given action", async () => {
+      const thunk = userProfileThunk();
+      await thunk(dispatch);
+
+      const expectedNumberOfCalls = 3;
 
       expect(dispatch).toHaveBeenCalledTimes(expectedNumberOfCalls);
     });

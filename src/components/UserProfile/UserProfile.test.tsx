@@ -4,6 +4,7 @@ import store from "../../redux/store/store";
 import { BrowserRouter } from "react-router-dom";
 import UserProfile from "./UserProfile";
 import { mockUserProfile } from "../../mocks/userMocks";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),

@@ -14,16 +14,16 @@ export interface IPage {
 export interface IEstablishment {
   establishmentType: IDictionary[];
   name: string;
-  cusine: String;
+  cusine: string;
   establishmentOffer: IDictionary[] | [];
   adress: string;
   municipality: string;
   region: string;
   phones: number | null;
-  emails: string;
-  website: string;
-  picture: string;
-  pictureBackup: string;
+  emails: string | null;
+  website: string | null;
+  picture: string | null;
+  pictureBackup: string | null;
   id: string;
 }
 

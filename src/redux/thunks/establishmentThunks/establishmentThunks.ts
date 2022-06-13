@@ -1,10 +1,17 @@
 import axios from "axios";
-import { establishmentsListEndpoint } from "../../../routes/establishmentEndpoints";
-import { loadEstablishmentsActionCreator } from "../../features/establishmentSlice/establishmentSlice";
+import {
+  deleteEstablishmentsEndpoint,
+  establishmentsListEndpoint,
+} from "../../../routes/establishmentEndpoints";
+import {
+  deleteEstablishmentActionCreator,
+  loadEstablishmentsActionCreator,
+} from "../../features/establishmentSlice/establishmentSlice";
 import {
   feedbackOnActionCreator,
   finishedLoadingActionCreator,
   loadingActionCreator,
+  setStatusCodeActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
 
@@ -24,3 +31,23 @@ export const loadEstablishmentThunk = () => async (dispatch: AppDispatch) => {
     dispatch(feedbackOnActionCreator());
   }
 };
+
+export const deleteEstablishmentThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+      const { status } = await axios.delete(
+        `${url}${deleteEstablishmentsEndpoint}${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        }
+      );
+      dispatch(finishedLoadingActionCreator());
+
+      dispatch(setStatusCodeActionCreator(status));
+      dispatch(deleteEstablishmentActionCreator(id));
+    } catch (error: any) {
+      dispatch(finishedLoadingActionCreator());
+      dispatch(feedbackOnActionCreator());
+    }
+  };

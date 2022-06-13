@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { loadEstablishmentThunk } from "./redux/thunks/establishmentThunks/establishmentThunks";
 import { useAppDispatch } from "./redux/hooks";
 import UserCredentialsValidation from "./components/UserCredentialsValidation/UserCredentialsValidation";
-import { IUserLoged, Token } from "./types/userInterfaces";
+import { IUserLoged } from "./types/userInterfaces";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import {
@@ -20,7 +20,7 @@ import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const token: Token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (token) {

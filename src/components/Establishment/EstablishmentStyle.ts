@@ -66,6 +66,32 @@ const EstablishmentStyle = styled.div`
   .establishment_subtittle {
     margin-bottom: 15px;
   }
+
+  .establishment__footer {
+    margin-top: 20px;
+  }
+
+  .establishment__footer-actions {
+    display: flex;
+  }
+
+  .establishment__footer-actions button {
+    margin: 5px;
+  }
+
+  .establishment__footer-actions--edit {
+    background-color: ${theme.palette.warning.light};
+  }
+  .establishment__footer-actions--edit:hover {
+    background-color: ${theme.palette.warning.main};
+  }
+
+  .establishment__footer-actions--delete {
+    background-color: ${theme.palette.error.light};
+  }
+  .establishment__footer-actions--delete:hover {
+    background-color: ${theme.palette.error.main};
+  }
 `;
 
 export default EstablishmentStyle;
