@@ -43,11 +43,10 @@ export interface IEstablishmentAddEdit {
   adress: string;
   municipality: string;
   region: string;
-  phone?: string | null;
+  phone?: string | number | null;
   email?: string | null;
   website?: string | null;
   image?: string | null;
-  id: string;
 }
 
 export interface IDictionary {

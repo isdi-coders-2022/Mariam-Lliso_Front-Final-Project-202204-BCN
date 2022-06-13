@@ -21,7 +21,7 @@ export const loadSingleEstablishmentThunk =
         }
       );
 
-      dispatch(loadSingleEstablishmentActionCreator(data));
+      await dispatch(loadSingleEstablishmentActionCreator(data));
       dispatch(finishedLoadingActionCreator());
     } catch (error: any) {
       dispatch(finishedLoadingActionCreator());

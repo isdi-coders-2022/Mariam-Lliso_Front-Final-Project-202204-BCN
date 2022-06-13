@@ -11,7 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
@@ -25,16 +25,53 @@ import AddEditFormStyle from "./AddEditFormStyle";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { createEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
+import { getFirebaseImageName } from "../../utils/getFirebaseImageName";
 
 const AddEditForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
-
+  const { establishmentId } = useParams();
   const { loading } = useAppSelector<IUserInterface>((state) => state.ui);
   const establishment = useAppSelector<IEstablishment>(
     (state) => state.singleEstablishment
   );
 
-  const { establishmentId } = useParams();
+  useEffect(() => {
+    if (establishmentId) {
+      console.log(establishment);
+      setFormData({
+        establishmentType: establishment.establishmentType[0]?.code || "",
+        name: establishment.name || "",
+        cusine: establishment.cusine || "",
+        adress: establishment.adress || "",
+        municipality: establishment.municipality || "",
+        region: establishment.region || "",
+        phone: establishment.phone || "",
+        email: establishment.email || "",
+        website: establishment.website || "",
+        image: "",
+      });
+      if (establishment.establishmentType[0]?.code)
+        setEstablishmentType(establishment.establishmentType[0]?.code);
+
+      if (establishment.pictureBackup) {
+        const imageName = getFirebaseImageName(establishment.pictureBackup);
+        setFileName(imageName);
+      }
+    }
+  }, [
+    dispatch,
+    establishment,
+    establishment.adress,
+    establishment.cusine,
+    establishment.email,
+    establishment.establishmentType,
+    establishment.municipality,
+    establishment.name,
+    establishment.phone,
+    establishment.region,
+    establishment.website,
+    establishmentId,
+  ]);
 
   const formInitialState: IEstablishmentAddEdit = {
     establishmentType: "",
@@ -48,7 +85,6 @@ const AddEditForm = (): JSX.Element => {
     email: "",
     website: "",
     image: "",
-    id: "",
   };
   const [formData, setFormData] =
     useState<IEstablishmentAddEdit>(formInitialState);
@@ -136,7 +172,7 @@ const AddEditForm = (): JSX.Element => {
       newEstablishment.append("cusine", formData.cusine);
     }
     if (formData.phone) {
-      newEstablishment.append("phone", formData.phone);
+      newEstablishment.append("phone", formData.phone.toString());
     }
     if (formData.email) {
       newEstablishment.append("email", formData.email);
