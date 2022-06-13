@@ -57,7 +57,6 @@ export const deleteEstablishmentThunk =
 export const createEstablishmentThunk =
   (formData: any) => async (dispatch: AppDispatch) => {
     try {
-      console.log(formData);
       dispatch(loadingActionCreator());
       const {
         data: { createdEstablishment },
