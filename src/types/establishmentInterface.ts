@@ -12,7 +12,7 @@ export interface IPage {
 }
 
 export interface IEstablishment {
-  establishmentType: IDictionary[];
+  establishmentType: IDictionary[] | [];
   name: string;
   cusine: string;
   establishmentOffer: IDictionary[] | [];
