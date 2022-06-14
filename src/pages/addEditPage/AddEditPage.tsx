@@ -8,23 +8,15 @@ import { IUserState } from "../../types/userInterfaces";
 import AddEditPagePageStyle from "./AddEditPageStyle";
 
 const AddEditPage = (): JSX.Element => {
-  const { logged }: IUserState = useAppSelector(
-    (state: RootState) => state.user
-  );
-  const navigate = useNavigate();
+  const { logged }: IUserState = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const { establishmentId } = useParams();
 
   useEffect(() => {
-    if (logged) {
-      if (establishmentId) {
-        dispatch(loadSingleEstablishmentThunk(establishmentId));
-        navigate(`/establishment/edit/${establishmentId}`);
-      } else {
-        navigate("/establishment/add");
-      }
+    if (logged && establishmentId) {
+      dispatch(loadSingleEstablishmentThunk(establishmentId));
     }
-  }, [navigate, logged, establishmentId, dispatch]);
+  }, [logged, establishmentId, dispatch]);
 
   return (
     <AddEditPagePageStyle>

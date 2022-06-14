@@ -3,7 +3,6 @@ import {
   mockEstablishments,
 } from "../../../mocks/establishmentMocks";
 import {
-  createEstablishmentActionCreator,
   deleteEstablishmentActionCreator,
   loadEstablishmentsActionCreator,
 } from "../../features/establishmentsSlice/establishmentsSlice";
@@ -17,8 +16,6 @@ import { server } from "../mocks/server/server";
 import {
   feedbackOnActionCreator,
   finishedLoadingActionCreator,
-  loadingActionCreator,
-  setStatusCodeActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import axios from "axios";
 

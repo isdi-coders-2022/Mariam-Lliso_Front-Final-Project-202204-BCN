@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import LoginPage from "../../pages/LoginPage/LoginPage";
+import { render } from "@testing-library/react";
 import UserCredentialsValidation from "./UserCredentialsValidation";
 
 const mockUseNavigate = jest.fn();

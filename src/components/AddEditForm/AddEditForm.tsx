@@ -29,49 +29,62 @@ import {
   editEstablishmentThunk,
 } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 import { getFirebaseImageName } from "../../utils/getFirebaseImageName";
+import { loadSingleEstablishmentThunk } from "../../redux/thunks/singleEstablishmentThunks/singleEstalbishmentThunks";
 
 const AddEditForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { establishmentId } = useParams();
+
   const { loading } = useAppSelector<IUserInterface>((state) => state.ui);
-  const establishment = useAppSelector<IEstablishment>(
-    (state) => state.singleEstablishment
-  );
+
+  const {
+    adress,
+    cusine,
+    email,
+    establishmentType,
+    municipality,
+    name,
+    phone,
+    region,
+    website,
+    pictureBackup,
+  } = useAppSelector<IEstablishment>((state) => state.singleEstablishment);
+
+  const { establishmentId } = useParams();
 
   useEffect(() => {
     if (establishmentId) {
       setFormData({
-        establishmentType: establishment.establishmentType[0]?.code || "",
-        name: establishment.name || "",
-        cusine: establishment.cusine || "",
-        adress: establishment.adress || "",
-        municipality: establishment.municipality || "",
-        region: establishment.region || "",
-        phone: establishment.phone || "",
-        email: establishment.email || "",
-        website: establishment.website || "",
+        establishmentType: establishmentType?.[0]?.code || "",
+        name: name || "",
+        cusine: cusine || "",
+        adress: adress || "",
+        municipality: municipality || "",
+        region: region || "",
+        phone: phone || "",
+        email: email || "",
+        website: website || "",
         image: "",
       });
-      if (establishment.establishmentType[0]?.code)
-        setEstablishmentType(establishment.establishmentType[0]?.code);
+      if (establishmentType?.[0]?.code)
+        setEstablishmentTypeCode(establishmentType?.[0]?.code);
 
-      if (establishment.pictureBackup) {
-        const imageName = getFirebaseImageName(establishment.pictureBackup);
+      if (pictureBackup) {
+        const imageName = getFirebaseImageName(pictureBackup);
         setFileName(imageName);
       }
     }
   }, [
     dispatch,
-    establishment,
-    establishment.adress,
-    establishment.cusine,
-    establishment.email,
-    establishment.establishmentType,
-    establishment.municipality,
-    establishment.name,
-    establishment.phone,
-    establishment.region,
-    establishment.website,
+    adress,
+    cusine,
+    email,
+    establishmentType,
+    municipality,
+    name,
+    phone,
+    region,
+    website,
+    pictureBackup,
     establishmentId,
   ]);
 
@@ -117,7 +130,7 @@ const AddEditForm = (): JSX.Element => {
     setFileName("");
   };
 
-  const [establishmentType, setEstablishmentType] = useState("");
+  const [establishmentTypeCode, setEstablishmentTypeCode] = useState("");
 
   const changeEstablishmentType = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -126,7 +139,7 @@ const AddEditForm = (): JSX.Element => {
       ...formData,
       establishmentType: event.target.value,
     });
-    setEstablishmentType(event.target.value);
+    setEstablishmentTypeCode(event.target.value);
   };
 
   const resetData = (): void => {
@@ -211,7 +224,7 @@ const AddEditForm = (): JSX.Element => {
             <TextField
               id="establishmentType"
               select
-              value={establishmentType}
+              value={establishmentTypeCode}
               onChange={changeEstablishmentType}
               label="Tipo de establecimiento"
               error={errors.establishmentType}
