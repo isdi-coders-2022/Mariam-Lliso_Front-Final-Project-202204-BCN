@@ -79,17 +79,15 @@ export const editEstablishmentThunk =
   (id: string, formData: any) => async (dispatch: AppDispatch) => {
     try {
       dispatch(loadingActionCreator());
-      const {
-        data: { editedEstablishment },
-        status,
-      } = await axios.put(`${url}${editEstablishmentEndpoint}${id}`, formData, {
-        headers: { Authorization: `Bearer ${localStorage.token}` },
-      });
+      const { status } = await axios.put(
+        `${url}${editEstablishmentEndpoint}${id}`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        }
+      );
 
-      if (editedEstablishment) {
-        dispatch(loadEstablishmentThunk());
-      }
-
+      dispatch(loadEstablishmentThunk());
       dispatch(finishedLoadingActionCreator());
       dispatch(setStatusCodeActionCreator(status));
     } catch (error: any) {
