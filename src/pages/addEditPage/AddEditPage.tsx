@@ -18,7 +18,6 @@ const AddEditPage = (): JSX.Element => {
   useEffect(() => {
     if (logged) {
       if (establishmentId) {
-        console.log("hola");
         dispatch(loadSingleEstablishmentThunk(establishmentId));
         navigate(`/establishment/edit/${establishmentId}`);
       } else {

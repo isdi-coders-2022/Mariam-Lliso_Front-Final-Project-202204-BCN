@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   createEstablishmentEndpoint,
   deleteEstablishmentsEndpoint,
+  editEstablishmentEndpoint,
   establishmentsListEndpoint,
 } from "../../../routes/establishmentEndpoints";
 import {
@@ -66,6 +67,29 @@ export const createEstablishmentThunk =
       });
 
       dispatch(createEstablishmentActionCreator(createdEstablishment));
+      dispatch(finishedLoadingActionCreator());
+      dispatch(setStatusCodeActionCreator(status));
+    } catch (error: any) {
+      dispatch(finishedLoadingActionCreator());
+      dispatch(feedbackOnActionCreator());
+    }
+  };
+
+export const editEstablishmentThunk =
+  (id: string, formData: any) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+      const {
+        data: { editedEstablishment },
+        status,
+      } = await axios.put(`${url}${editEstablishmentEndpoint}${id}`, formData, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+      });
+
+      if (editedEstablishment) {
+        dispatch(loadEstablishmentThunk());
+      }
+
       dispatch(finishedLoadingActionCreator());
       dispatch(setStatusCodeActionCreator(status));
     } catch (error: any) {

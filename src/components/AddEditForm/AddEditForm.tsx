@@ -24,7 +24,10 @@ import { establishmentTypes } from "../../utils/establishmentTypesAndOffers";
 import AddEditFormStyle from "./AddEditFormStyle";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { createEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
+import {
+  createEstablishmentThunk,
+  editEstablishmentThunk,
+} from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 import { getFirebaseImageName } from "../../utils/getFirebaseImageName";
 
 const AddEditForm = (): JSX.Element => {
@@ -37,7 +40,6 @@ const AddEditForm = (): JSX.Element => {
 
   useEffect(() => {
     if (establishmentId) {
-      console.log(establishment);
       setFormData({
         establishmentType: establishment.establishmentType[0]?.code || "",
         name: establishment.name || "",
@@ -155,7 +157,6 @@ const AddEditForm = (): JSX.Element => {
   };
 
   const submitAddEditForm = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log("entró al submitAddEditForm");
     event.preventDefault();
     const isNotValidated = validateFields();
     if (isNotValidated) {
@@ -184,7 +185,11 @@ const AddEditForm = (): JSX.Element => {
       newEstablishment.append("image", formData.image);
     }
 
-    dispatch(createEstablishmentThunk(newEstablishment));
+    if (establishmentId) {
+      dispatch(editEstablishmentThunk(establishmentId, newEstablishment));
+    } else {
+      dispatch(createEstablishmentThunk(newEstablishment));
+    }
     resetData();
   };
 
