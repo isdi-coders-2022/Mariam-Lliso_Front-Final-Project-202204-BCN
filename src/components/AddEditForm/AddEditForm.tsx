@@ -5,14 +5,11 @@ import {
   FormHelperText,
   IconButton,
   InputLabel,
-  MenuItem,
   OutlinedInput,
-  Select,
-  SelectChangeEvent,
   Stack,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
@@ -65,8 +62,6 @@ const AddEditForm = (): JSX.Element => {
         website: website || "",
         image: "",
       });
-      if (establishmentType?.[0]?.code)
-        setEstablishmentTypeCode(establishmentType?.[0]?.code);
 
       if (pictureBackup) {
         const imageName = getFirebaseImageName(pictureBackup);
@@ -104,9 +99,9 @@ const AddEditForm = (): JSX.Element => {
   const [formData, setFormData] =
     useState<IEstablishmentAddEdit>(formInitialState);
 
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState<string>("");
 
-  const changeData = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const changeData = (event: SyntheticEvent): void => {
     setFormData({
       ...formData,
       [(event.target as HTMLInputElement).id]:
@@ -116,9 +111,12 @@ const AddEditForm = (): JSX.Element => {
     });
 
     if ((event.target as HTMLInputElement).type === "file") {
-      setFileName(
-        event.target.files?.[0].name ? event.target.files?.[0].name : ""
-      );
+      let actualFileName = (event.target as HTMLInputElement).files?.[0].name;
+      if (actualFileName) {
+        setFileName(actualFileName);
+      } else {
+        setFileName("");
+      }
     }
   };
 
@@ -130,20 +128,16 @@ const AddEditForm = (): JSX.Element => {
     setFileName("");
   };
 
-  const [establishmentTypeCode, setEstablishmentTypeCode] = useState("");
-
-  const changeEstablishmentType = (event: SelectChangeEvent) => {
-    setFormData({
-      ...formData,
-      establishmentType: event.target.value,
-    });
-    setEstablishmentTypeCode(event.target.value);
-  };
-
   const resetData = (): void => {
     setFormData(formInitialState);
   };
 
+  const changeEstablishmentType = (event: SyntheticEvent) => {
+    setFormData({
+      ...formData,
+      establishmentType: (event.target as HTMLInputElement).value,
+    });
+  };
   const errorInitialState: IValidationEstablishment = {
     establishmentType: false,
     name: false,
@@ -218,26 +212,28 @@ const AddEditForm = (): JSX.Element => {
 
       <form autoComplete="off" onSubmit={submitAddEditForm}>
         <Stack spacing={3}>
-          <FormControl variant="outlined">
-            <InputLabel id="establishmentType-label">
-              Tipo de establecimiento
-            </InputLabel>
-            <Select
-              labelId="establishmentType-label"
-              id="establishmentType"
-              value={establishmentTypeCode}
-              label="Tipo de establecimiento"
+          <Typography
+            variant="h4"
+            component="h2"
+            className="addEdit_section-tittle"
+          >
+            Tipo de establecimiento
+          </Typography>
+          <FormControl>
+            <select
+              id="style"
+              className={errors.establishmentType ? "error" : "custom-select"}
+              name="style"
+              value={formData.establishmentType}
               onChange={changeEstablishmentType}
-              error={errors.establishmentType}
               data-testid="establishmentType-testid"
             >
               {establishmentTypes.map((option) => (
-                <MenuItem key={option.code} value={option.code}>
+                <option key={option.code} value={option.code}>
                   {option.description}
-                </MenuItem>
+                </option>
               ))}
-            </Select>
-
+            </select>
             <FormHelperText
               id="establishmentType-helpertext"
               error={errors.establishmentType}
@@ -248,6 +244,13 @@ const AddEditForm = (): JSX.Element => {
             </FormHelperText>
           </FormControl>
 
+          <Typography
+            variant="h4"
+            component="h2"
+            className="addEdit_section-tittle"
+          >
+            Datos del establecimiento
+          </Typography>
           <FormControl variant="outlined">
             <InputLabel htmlFor="name" error={errors.name}>
               Nombre
@@ -284,7 +287,13 @@ const AddEditForm = (): JSX.Element => {
             startIcon={<AddPhotoAlternateOutlinedIcon />}
           >
             subir una imagen
-            <input type="file" hidden id="image" onChange={changeData} />
+            <input
+              type="file"
+              hidden
+              id="image"
+              onChange={changeData}
+              data-testid="upload-image"
+            />
           </Button>
           {fileName && (
             <div className="uploaded-image">
@@ -330,7 +339,7 @@ const AddEditForm = (): JSX.Element => {
             <OutlinedInput
               id="municipality"
               type="text"
-              label="Dirección"
+              label="Municipio"
               onChange={changeData}
               value={formData.municipality}
               error={errors.municipality}
@@ -349,7 +358,7 @@ const AddEditForm = (): JSX.Element => {
             <OutlinedInput
               id="region"
               type="text"
-              label="Dirección"
+              label="Provincia"
               onChange={changeData}
               value={formData.region}
               error={errors.region}
@@ -373,6 +382,7 @@ const AddEditForm = (): JSX.Element => {
               label="Teléfono"
               onChange={changeData}
               value={formData.phone}
+              data-testid="phone-testid"
             />
             <FormHelperText id="phone-helpertext"> </FormHelperText>
           </FormControl>
