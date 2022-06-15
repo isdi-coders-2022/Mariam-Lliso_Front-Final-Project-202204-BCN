@@ -9,8 +9,8 @@ export const mockUserRegister: IUserRegister = {
 };
 
 export const mockRol: IUserRol = {
-  code: "USR",
-  description: "user",
+  code: "ADM",
+  description: "Admin",
 };
 export const mockUserProfile: IUserProfile = {
   name: "Lola",

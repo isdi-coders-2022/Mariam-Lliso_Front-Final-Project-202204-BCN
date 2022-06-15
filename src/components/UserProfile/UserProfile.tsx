@@ -13,7 +13,7 @@ import { resetProfileActionCreator } from "../../redux/features/userProfileSlice
 const UserProfile = () => {
   const dispach = useAppDispatch();
   const navigate = useNavigate();
-  const userProfile = useAppSelector<IUserProfile>(
+  const { name, surnames, username, userRol } = useAppSelector<IUserProfile>(
     (state) => state.userProfile
   );
 
@@ -34,7 +34,7 @@ const UserProfile = () => {
           <img
             className="profile-image__avatar"
             src="/image/user-profile.png"
-            alt={`Foto de perfil de ${userProfile.name}`}
+            alt={`Foto de perfil de ${name}`}
           />
         </div>
       </div>
@@ -45,7 +45,7 @@ const UserProfile = () => {
             component="h1"
             className="profile-content__info-username"
           >
-            {`${userProfile.username}`}
+            {`${username}`}
           </Typography>
           <div className="profile-content__info-profile">
             <PermIdentityOutlinedIcon color={"primary"} />
@@ -55,7 +55,7 @@ const UserProfile = () => {
               className="profile-content__info-name"
               color={theme.palette.primary.main}
             >
-              {`${userProfile.name} ${userProfile.surnames}`}
+              {`${name} ${surnames}`}
             </Typography>
           </div>
           <div className="profile-content__info-profile">
@@ -66,13 +66,13 @@ const UserProfile = () => {
               className="profile-content__info-name"
               color={theme.palette.primary.main}
             >
-              {`${userProfile.userRol.description}`}
+              {`${userRol.description}`}
             </Typography>
           </div>
         </div>
         <div className="profile-content__actions">
           <div className="profile-content__actions-buttons">
-            {userProfile.userRol.code === rolAdmin && (
+            {userRol.code === rolAdmin && (
               <Button
                 fullWidth
                 size="large"
