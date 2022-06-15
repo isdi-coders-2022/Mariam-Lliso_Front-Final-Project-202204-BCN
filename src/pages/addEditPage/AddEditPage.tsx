@@ -4,7 +4,7 @@ import AddEditForm from "../../components/AddEditForm/AddEditForm";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loadSingleEstablishmentThunk } from "../../redux/thunks/singleEstablishmentThunks/singleEstalbishmentThunks";
 import { IUserState } from "../../types/userInterfaces";
-import AddEditPagePageStyle from "./AddEditPageStyle";
+import AddEditPageStyle from "./AddEditPageStyle";
 
 const AddEditPage = (): JSX.Element => {
   const { logged }: IUserState = useAppSelector((state) => state.user);
@@ -18,9 +18,9 @@ const AddEditPage = (): JSX.Element => {
   }, [logged, establishmentId, dispatch]);
 
   return (
-    <AddEditPagePageStyle>
+    <AddEditPageStyle>
       <AddEditForm />
-    </AddEditPagePageStyle>
+    </AddEditPageStyle>
   );
 };
 
