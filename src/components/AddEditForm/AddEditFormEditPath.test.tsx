@@ -82,4 +82,64 @@ describe("Given AddEditForm component with establishmentId param", () => {
       expect(expectedButton).toBeInTheDocument();
     });
   });
+
+  describe("when a establishment is edited and required params are modified", () => {
+    test("Then dispatch should been called", async () => {
+      await waitFor(() => {
+        const loadSingleEstablishmentAction = {
+          type: "singleEstablishment/loadSingleEstablishment",
+          payload: mockPayload,
+        };
+
+        store.dispatch(loadSingleEstablishmentAction);
+      });
+
+      render(
+        <MemoryRouter
+          initialEntries={["/establishment/edit/629c6fab590f5fafee71800b"]}
+        >
+          <Routes>
+            <Route
+              path="/establishment/edit/:establishmentId"
+              element={
+                <Provider store={store}>
+                  <ThemeProvider theme={theme}>
+                    <AddEditForm />
+                  </ThemeProvider>
+                </Provider>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
+      );
+
+      const establishmentTypeSelect = screen.getByTestId(
+        "establishmentType-testid"
+      );
+      userEvent.selectOptions(establishmentTypeSelect, "RES");
+      const nameInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Nombre",
+      });
+      userEvent.type(nameInput, "somename");
+      const adressInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Dirección",
+      });
+      userEvent.type(adressInput, "somename");
+      const municipalityInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Municipio",
+      });
+      userEvent.type(municipalityInput, "somename");
+      const regionInput: HTMLInputElement = screen.getByRole("textbox", {
+        name: "Provincia",
+      });
+      userEvent.type(regionInput, "somename");
+
+      const expectedButton: HTMLButtonElement = screen.getByRole("button", {
+        name: "editar establecimiento",
+      });
+      userEvent.click(expectedButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
 });
