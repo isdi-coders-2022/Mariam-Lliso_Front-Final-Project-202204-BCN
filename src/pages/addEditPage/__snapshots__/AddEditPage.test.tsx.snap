@@ -22,76 +22,70 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
         <div
           className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
         >
-          <div
-            className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          <label
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            id="establishmentType-label"
           >
-            <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink={false}
-              htmlFor="establishmentType"
-              id="establishmentType-label"
-            >
-              Tipo de establecimiento
-            </label>
+            Tipo de establecimiento
+          </label>
+          <div
+            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            data-testid="establishmentType-testid"
+            onClick={[Function]}
+          >
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
-              onClick={[Function]}
-              variant="outlined"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby="establishmentType-label establishmentType"
+              className="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              id="establishmentType"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
             >
-              <div
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby="establishmentType-label establishmentType"
-                className="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-                id="establishmentType"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                role="button"
-                tabIndex={0}
+              <span
+                className="notranslate"
               >
-                <span
-                  className="notranslate"
-                >
-                  ​
-                </span>
-              </div>
-              <input
-                aria-hidden={true}
-                autoFocus={false}
-                className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                disabled={false}
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value=""
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-                data-testid="ArrowDropDownIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="css-1ftyaf0"
-                >
-                  <span>
-                    Tipo de establecimiento
-                  </span>
-                </legend>
-              </fieldset>
+                ​
+              </span>
             </div>
+            <input
+              aria-hidden={true}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-1ftyaf0"
+              >
+                <span>
+                  Tipo de establecimiento
+                </span>
+              </legend>
+            </fieldset>
           </div>
           <p
             className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
@@ -565,7 +559,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
         <button
           className="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root css-sppx0e-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
           disabled={false}
-          id=":r1:"
+          id=":r0:"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
