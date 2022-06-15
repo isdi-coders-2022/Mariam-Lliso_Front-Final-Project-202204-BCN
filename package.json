@@ -54,7 +54,7 @@
       "!src/routes/**",
       "!src/mocks/**",
       "!src/AppStyle.ts",
-      "!src/redux/thunks/mocks"
+      "!src/redux/thunks/mocks/**"
     ]
   },
   "eslintConfig": {
