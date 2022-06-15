@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Given a RegisterPage component page When it's invoked Then it should always match this snapshot 1`] = `
+exports[`Given a AlerCustom component When it's invoked Then it should always match this snapshot 1`] = `
 <div
   className="sc-bczRLJ jILTDa"
 >
