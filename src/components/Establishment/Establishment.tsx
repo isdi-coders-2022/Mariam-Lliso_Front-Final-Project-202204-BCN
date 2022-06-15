@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Establishment = (props: Props): JSX.Element => {
-  const user = useAppSelector<IUserState>((state) => state.user);
+  const { userData } = useAppSelector<IUserState>((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -78,7 +78,7 @@ const Establishment = (props: Props): JSX.Element => {
       </div>
       <div className="establishment__footer">
         <div className="establishment__footer-actions">
-          {user.userData.userRol === rolAdmin && (
+          {userData.userRol === rolAdmin && (
             <>
               <Button
                 fullWidth
