@@ -17,9 +17,9 @@ describe("Given a RegisterForm component", () => {
     test("Then it should render a form with a button with the text 'registrarse'", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <RegisterForm></RegisterForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
       const expectedButton: HTMLButtonElement = screen.getByRole("button", {
@@ -36,9 +36,9 @@ describe("Given a RegisterForm component", () => {
     test("Then it should show three diferenten helper text for each field", () => {
       const view = render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <RegisterForm></RegisterForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
       const expectedNameText = "El nombre es obligatorio";
@@ -54,7 +54,6 @@ describe("Given a RegisterForm component", () => {
       const helperUsername = getById(view.container, "username-helpertext");
       const helperPassword = getById(view.container, "password-helpertext");
 
-
       expect(helperName).toHaveTextContent(expectedNameText);
       expect(helperUsername).toHaveTextContent(expectedUsernameText);
       expect(helperPassword).toHaveTextContent(expectedPasswordText);
@@ -65,9 +64,9 @@ describe("Given a RegisterForm component", () => {
     test("Then resetData should been called", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <RegisterForm></RegisterForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
 
@@ -88,7 +87,7 @@ describe("Given a RegisterForm component", () => {
         name: "registrarse",
       });
       userEvent.click(registerButton);
-      
+
       expect(nameInput).toHaveValue("");
       expect(usernameInput).toHaveValue("");
     });
@@ -96,9 +95,9 @@ describe("Given a RegisterForm component", () => {
     test("Then dispatch should been called", () => {
       render(
         <BrowserRouter>
-        <Provider store={store}>
+          <Provider store={store}>
             <RegisterForm></RegisterForm>
-        </Provider>
+          </Provider>
         </BrowserRouter>
       );
 

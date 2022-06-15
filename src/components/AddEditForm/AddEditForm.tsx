@@ -7,8 +7,9 @@ import {
   InputLabel,
   MenuItem,
   OutlinedInput,
+  Select,
+  SelectChangeEvent,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -29,7 +30,6 @@ import {
   editEstablishmentThunk,
 } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 import { getFirebaseImageName } from "../../utils/getFirebaseImageName";
-import { loadSingleEstablishmentThunk } from "../../redux/thunks/singleEstablishmentThunks/singleEstalbishmentThunks";
 
 const AddEditForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -132,9 +132,7 @@ const AddEditForm = (): JSX.Element => {
 
   const [establishmentTypeCode, setEstablishmentTypeCode] = useState("");
 
-  const changeEstablishmentType = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const changeEstablishmentType = (event: SelectChangeEvent) => {
     setFormData({
       ...formData,
       establishmentType: event.target.value,
@@ -221,20 +219,24 @@ const AddEditForm = (): JSX.Element => {
       <form autoComplete="off" onSubmit={submitAddEditForm}>
         <Stack spacing={3}>
           <FormControl variant="outlined">
-            <TextField
+            <InputLabel id="establishmentType-label">
+              Tipo de establecimiento
+            </InputLabel>
+            <Select
+              labelId="establishmentType-label"
               id="establishmentType"
-              select
               value={establishmentTypeCode}
-              onChange={changeEstablishmentType}
               label="Tipo de establecimiento"
+              onChange={changeEstablishmentType}
               error={errors.establishmentType}
+              data-testid="establishmentType-testid"
             >
               {establishmentTypes.map((option) => (
                 <MenuItem key={option.code} value={option.code}>
                   {option.description}
                 </MenuItem>
               ))}
-            </TextField>
+            </Select>
 
             <FormHelperText
               id="establishmentType-helpertext"
