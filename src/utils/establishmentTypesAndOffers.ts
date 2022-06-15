@@ -2,6 +2,10 @@ import { IDictionary } from "../types/establishmentInterface";
 
 export const establishmentTypes: IDictionary[] = [
   {
+    code: "",
+    description: "",
+  },
+  {
     code: "RES",
     description: "Restaurante",
   },

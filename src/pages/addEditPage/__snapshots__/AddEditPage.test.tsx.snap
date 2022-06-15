@@ -5,7 +5,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
   className="sc-gsnTZi dzQbXI"
 >
   <div
-    className="sc-bczRLJ ePQvGw"
+    className="sc-bczRLJ dTEFzN"
   >
     <h1
       className="MuiTypography-root MuiTypography-h1 addEdit_tittle css-o2w69a-MuiTypography-root"
@@ -19,74 +19,71 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
       <div
         className="css-1lwbda4-MuiStack-root"
       >
+        <h2
+          className="MuiTypography-root MuiTypography-h4 addEdit_section-tittle css-5lbw0b-MuiTypography-root"
+        >
+          Tipo de establecimiento
+        </h2>
         <div
           className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
         >
-          <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-            data-shrink={false}
-            id="establishmentType-label"
-          >
-            Tipo de establecimiento
-          </label>
-          <div
-            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+          <select
+            className="custom-select"
             data-testid="establishmentType-testid"
-            onClick={[Function]}
+            id="style"
+            name="style"
+            onChange={[Function]}
+            value=""
           >
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-labelledby="establishmentType-label establishmentType"
-              className="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-              id="establishmentType"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              role="button"
-              tabIndex={0}
-            >
-              <span
-                className="notranslate"
-              >
-                ​
-              </span>
-            </div>
-            <input
-              aria-hidden={true}
-              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-              disabled={false}
-              onAnimationStart={[Function]}
-              onChange={[Function]}
-              required={false}
-              tabIndex={-1}
+            <option
               value=""
             />
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-              data-testid="ArrowDropDownIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <option
+              value="RES"
             >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-            <fieldset
-              aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              Restaurante
+            </option>
+            <option
+              value="CAF"
             >
-              <legend
-                className="css-1ftyaf0"
-              >
-                <span>
-                  Tipo de establecimiento
-                </span>
-              </legend>
-            </fieldset>
-          </div>
+              Cafetería
+            </option>
+            <option
+              value="OBR"
+            >
+              Obrador
+            </option>
+            <option
+              value="HOT"
+            >
+              Hotel
+            </option>
+            <option
+              value="PAS"
+            >
+              Pastelería
+            </option>
+            <option
+              value="TIE"
+            >
+              Tienda
+            </option>
+            <option
+              value="HER"
+            >
+              Herbolarío
+            </option>
+            <option
+              value="SEP"
+            >
+              Supermercado
+            </option>
+            <option
+              value="CAR"
+            >
+              Carnicería
+            </option>
+          </select>
           <p
             className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
             id="establishmentType-helpertext"
@@ -98,6 +95,11 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
             </span>
           </p>
         </div>
+        <h2
+          className="MuiTypography-root MuiTypography-h4 addEdit_section-tittle css-5lbw0b-MuiTypography-root"
+        >
+          Datos del establecimiento
+        </h2>
         <div
           className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
         >
@@ -234,6 +236,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
           </span>
           subir una imagen
           <input
+            data-testid="upload-image"
             hidden={true}
             id="image"
             onChange={[Function]}
@@ -331,7 +334,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
                 className="css-1ftyaf0"
               >
                 <span>
-                  Dirección
+                  Municipio
                 </span>
               </legend>
             </fieldset>
@@ -382,7 +385,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
                 className="css-1ftyaf0"
               >
                 <span>
-                  Dirección
+                  Provincia
                 </span>
               </legend>
             </fieldset>
@@ -415,6 +418,7 @@ exports[`Given AddEditPage component When it's invoked Then it should always mat
           </label>
           <div
             className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            data-testid="phone-testid"
             onClick={[Function]}
           >
             <input
