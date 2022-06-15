@@ -6,7 +6,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import EstablishmentListPage from "./pages/EstablishmentListPage/EstablishmentListPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useEffect } from "react";
-import { loadEstablishmentThunk } from "./redux/thunks/establishmentThunks/establishmentThunks";
+import { loadEstablishmentThunk } from "./redux/thunks/establishmentsThunks/establishmentsThunks";
 import { useAppDispatch } from "./redux/hooks";
 import UserCredentialsValidation from "./components/UserCredentialsValidation/UserCredentialsValidation";
 import { IUserLoged } from "./types/userInterfaces";
@@ -17,6 +17,7 @@ import {
   userProfileThunk,
 } from "./redux/thunks/userThunks/userThunks";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
+import AddEditPage from "./pages/addEditPage/AddEditPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -51,6 +52,22 @@ const App = () => {
             element={
               <UserCredentialsValidation>
                 <UserProfilePage />
+              </UserCredentialsValidation>
+            }
+          />
+          <Route
+            path="/establishment/add"
+            element={
+              <UserCredentialsValidation>
+                <AddEditPage />
+              </UserCredentialsValidation>
+            }
+          />
+          <Route
+            path="/establishment/edit/:establishmentId"
+            element={
+              <UserCredentialsValidation>
+                <AddEditPage />
               </UserCredentialsValidation>
             }
           />

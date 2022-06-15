@@ -1,7 +1,11 @@
 import { rest } from "msw";
-import { mockEstablishments } from "../../../../mocks/establishmentMocks";
+import {
+  mockEstablishments,
+  mockEstablishment,
+} from "../../../../mocks/establishmentMocks";
 import { mockUserProfile } from "../../../../mocks/userMocks";
 import {
+  createEstablishmentEndpoint,
   deleteEstablishmentsEndpoint,
   establishmentsListEndpoint,
 } from "../../../../routes/establishmentEndpoints";
@@ -19,6 +23,7 @@ export const mockEstablishmentData: IEstablishmentState = {
 };
 
 export const handlers = [
+  // establishment
   rest.get(
     `${process.env.REACT_APP_API_URL}${establishmentsListEndpoint}`,
     (_, res, ctx) => res(ctx.status(200), ctx.json(mockEstablishmentData))
@@ -34,6 +39,22 @@ export const handlers = [
       );
     }
   ),
+  rest.post(
+    `${process.env.REACT_APP_API_URL}${createEstablishmentEndpoint}`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockEstablishment));
+    }
+  ),
+  rest.put(
+    `${process.env.REACT_APP_API_URL}${createEstablishmentEndpoint}:id`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({ data: { editedEstablishment: mockEstablishment } })
+      );
+    }
+  ),
+  // user
   rest.get(
     `${process.env.REACT_APP_API_URL}${userProfileEndpoint}`,
     (req, res, ctx) => {

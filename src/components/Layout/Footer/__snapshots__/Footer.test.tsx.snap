@@ -2,7 +2,7 @@
 
 exports[`Given a Footer component page When it's invoked Then it should always match this snapshot 1`] = `
 <footer
-  className="sc-gsnTZi fzIMaI"
+  className="sc-gsnTZi gGLGnv"
 >
   <nav
     className="nav"

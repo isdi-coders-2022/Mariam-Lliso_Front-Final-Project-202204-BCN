@@ -12,7 +12,7 @@ const initialState: IEstablishmentState = {
   establishments: [],
 };
 
-const establishmentSlice = createSlice({
+const establishmentsSlice = createSlice({
   name: "establishment",
   initialState,
   reducers: {
@@ -43,5 +43,5 @@ export const {
   loadEstablishments: loadEstablishmentsActionCreator,
   deleteEstablishment: deleteEstablishmentActionCreator,
   createEstablishment: createEstablishmentActionCreator,
-} = establishmentSlice.actions;
-export default establishmentSlice.reducer;
+} = establishmentsSlice.actions;
+export default establishmentsSlice.reducer;

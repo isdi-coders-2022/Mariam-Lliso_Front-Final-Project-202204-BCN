@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { IUserState } from "../../types/userInterfaces";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentThunks/establishmentThunks";
+import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   establishment: IEstablishment;
@@ -17,9 +18,14 @@ interface Props {
 const Establishment = (props: Props): JSX.Element => {
   const user = useAppSelector<IUserState>((state) => state.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const deleteEstablishment = () => {
     dispatch(deleteEstablishmentThunk(props.establishment.id));
+  };
+
+  const editEstablisment = () => {
+    navigate(`/establishment/edit/${props.establishment.id}`);
   };
 
   return (
@@ -81,6 +87,7 @@ const Establishment = (props: Props): JSX.Element => {
                 variant="contained"
                 startIcon={<EditOutlinedIcon />}
                 className="establishment__footer-actions--edit"
+                onClick={editEstablisment}
               >
                 editar
               </Button>
