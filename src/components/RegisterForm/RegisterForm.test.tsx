@@ -4,12 +4,20 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
 import { BrowserRouter } from "react-router-dom";
+import React from "react";
 
 const mockDispatch = jest.fn();
 
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: () => mockDispatch,
+}));
+
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
 }));
 
 describe("Given a RegisterForm component", () => {
@@ -27,6 +35,24 @@ describe("Given a RegisterForm component", () => {
       });
 
       expect(expectedButton).toBeInTheDocument();
+    });
+  });
+
+  describe("When invoked and user clicks to '¿Ya tienes una cuenta? ¡Inicia sesión!'", () => {
+    test("Then it should navigate to '/login'", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm></RegisterForm>
+          </Provider>
+        </BrowserRouter>
+      );
+      const expectedButton: HTMLButtonElement = screen.getByRole("button", {
+        name: "¿Ya tienes una cuenta? ¡Inicia sesión!",
+      });
+      userEvent.click(expectedButton);
+
+      expect(mockUseNavigate).toHaveBeenCalledWith("/login");
     });
   });
 
@@ -120,6 +146,27 @@ describe("Given a RegisterForm component", () => {
       userEvent.click(registerButton);
 
       expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When invoked and user clicks to VisibilityIcon button", () => {
+    test("Then it should call setShowPassword", () => {
+      const setStateMock = jest.fn();
+      const useStateMock: any = (useState: any) => [useState, setStateMock];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm></RegisterForm>
+          </Provider>
+        </BrowserRouter>
+      );
+      const expectedButton: HTMLButtonElement =
+        screen.getByTestId("VisibilityIcon");
+      userEvent.click(expectedButton);
+
+      expect(setStateMock).toHaveBeenCalledWith(true);
     });
   });
 });
