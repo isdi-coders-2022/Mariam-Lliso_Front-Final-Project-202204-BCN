@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   IEstablishment,
@@ -30,6 +30,7 @@ import { getFirebaseImageName } from "../../utils/getFirebaseImageName";
 
 const AddEditForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { loading } = useAppSelector<IUserInterface>((state) => state.ui);
 
@@ -192,8 +193,10 @@ const AddEditForm = (): JSX.Element => {
 
     if (establishmentId) {
       dispatch(editEstablishmentThunk(establishmentId, newEstablishment));
+      navigate("/establishment/list");
     } else {
       dispatch(createEstablishmentThunk(newEstablishment));
+      navigate("/establishment/list");
     }
     resetData();
   };

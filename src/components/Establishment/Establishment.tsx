@@ -10,6 +10,9 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 import { useNavigate } from "react-router-dom";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 
 interface Props {
   establishment: IEstablishment;
@@ -75,6 +78,42 @@ const Establishment = (props: Props): JSX.Element => {
             {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
           </Typography>
         </div>
+        {props.establishment.phone && (
+          <div className="establishment_location">
+            <LocalPhoneOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.phone}`}
+            </Typography>
+          </div>
+        )}
+        {props.establishment.email && (
+          <div className="establishment_location">
+            <AlternateEmailOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.email}`}
+            </Typography>
+          </div>
+        )}
+        {props.establishment.website && (
+          <div className="establishment_location">
+            <LanguageOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.website}`}
+            </Typography>
+          </div>
+        )}
       </div>
       <div className="establishment__footer">
         <div className="establishment__footer-actions">
