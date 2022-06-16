@@ -49,6 +49,8 @@ const Establishment = (props: Props): JSX.Element => {
                 : "/image/establishment_default.jpg"
             }
             alt={props.establishment.name}
+            width={900}
+            height={400}
           />
         </div>
       </div>

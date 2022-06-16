@@ -47,7 +47,7 @@ const EstablishmentStyle = styled.div`
     padding: 0px 15px;
     border-radius: 50px;
     text-transform: uppercase;
-    color: white;
+    color: black;
   }
 
   .establishment_location {
