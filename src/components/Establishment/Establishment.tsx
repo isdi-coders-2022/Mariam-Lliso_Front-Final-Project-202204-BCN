@@ -1,7 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { IEstablishment } from "../../types/establishmentInterface";
 import EstablishmentStyle from "./EstablishmentStyle";
-import theme from "../../theme/theme";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import { rolAdmin } from "../../utils/userRols";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
