@@ -81,16 +81,20 @@ const EstablishmentStyle = styled.div`
 
   .establishment__footer-actions--edit {
     background-color: ${theme.palette.warning.light};
+    color: black;
   }
   .establishment__footer-actions--edit:hover {
     background-color: ${theme.palette.warning.main};
+    color: black;
   }
 
   .establishment__footer-actions--delete {
     background-color: ${theme.palette.error.light};
+    color: black;
   }
   .establishment__footer-actions--delete:hover {
     background-color: ${theme.palette.error.main};
+    color: black;
   }
 `;
 
