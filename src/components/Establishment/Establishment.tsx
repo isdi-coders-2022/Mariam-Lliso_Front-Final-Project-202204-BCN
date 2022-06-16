@@ -1,7 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { IEstablishment } from "../../types/establishmentInterface";
 import EstablishmentStyle from "./EstablishmentStyle";
-import theme from "../../theme/theme";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import { rolAdmin } from "../../utils/userRols";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -10,6 +9,9 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { deleteEstablishmentThunk } from "../../redux/thunks/establishmentsThunks/establishmentsThunks";
 import { useNavigate } from "react-router-dom";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 
 interface Props {
   establishment: IEstablishment;
@@ -46,6 +48,8 @@ const Establishment = (props: Props): JSX.Element => {
                 : "/image/establishment_default.jpg"
             }
             alt={props.establishment.name}
+            width="900"
+            height="400"
           />
         </div>
       </div>
@@ -60,7 +64,6 @@ const Establishment = (props: Props): JSX.Element => {
         <Typography
           variant="subtitle1"
           component="h3"
-          color={theme.palette.primary.main}
           className="establishment_subtittle"
         >
           {props.establishment.cusine}
@@ -75,6 +78,42 @@ const Establishment = (props: Props): JSX.Element => {
             {`${props.establishment.adress}, ${props.establishment.municipality}, ${props.establishment.region}`}
           </Typography>
         </div>
+        {props.establishment.phone && (
+          <div className="establishment_location">
+            <LocalPhoneOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.phone}`}
+            </Typography>
+          </div>
+        )}
+        {props.establishment.email && (
+          <div className="establishment_location">
+            <AlternateEmailOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.email}`}
+            </Typography>
+          </div>
+        )}
+        {props.establishment.website && (
+          <div className="establishment_location">
+            <LanguageOutlinedIcon />
+            <Typography
+              variant="body1"
+              component="h4"
+              className="establishment_location-tittle"
+            >
+              {`${props.establishment.website}`}
+            </Typography>
+          </div>
+        )}
       </div>
       <div className="establishment__footer">
         <div className="establishment__footer-actions">

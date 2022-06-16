@@ -40,6 +40,13 @@ jest.mock("react-redux", () => ({
   useSelector: () => ({ singleEstablishment: mockPayload }),
 }));
 
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
+
 describe("Given AddEditForm component with establishmentId param", () => {
   describe("When invoked", () => {
     test("Then it should render a header with text 'Añadir nuevo establecimient' and button with 'creaer establecimiento'", async () => {
@@ -140,6 +147,7 @@ describe("Given AddEditForm component with establishmentId param", () => {
       userEvent.click(expectedButton);
 
       expect(mockDispatch).toHaveBeenCalled();
+      expect(mockUseNavigate).toHaveBeenCalled();
     });
   });
 });
