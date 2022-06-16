@@ -49,8 +49,8 @@ const Establishment = (props: Props): JSX.Element => {
                 : "/image/establishment_default.jpg"
             }
             alt={props.establishment.name}
-            width={900}
-            height={400}
+            width="900"
+            height="400"
           />
         </div>
       </div>
@@ -65,7 +65,6 @@ const Establishment = (props: Props): JSX.Element => {
         <Typography
           variant="subtitle1"
           component="h3"
-          color={theme.palette.primary.main}
           className="establishment_subtittle"
         >
           {props.establishment.cusine}
